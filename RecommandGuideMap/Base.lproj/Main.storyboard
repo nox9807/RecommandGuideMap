@@ -3,12 +3,13 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--지도-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RecommandGuideMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,24 +17,105 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fai-ar-cAh">
-                                <rect key="frame" x="16" y="118" width="349" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <searchBar contentMode="redraw" placeholder="검색어를 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="Fai-ar-cAh">
+                                <rect key="frame" x="16" y="118" width="311.33333333333331" height="64"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="SLD-qv-wFX"/>
                                 </connections>
                             </searchBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoq-h9-ynW">
+                                <rect key="frame" x="0.0" y="190" width="393" height="40"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sz2-Le-gDp">
+                                        <rect key="frame" x="0.0" y="0.0" width="447" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hy-p3-t17">
+                                                <rect key="frame" x="0.0" y="3" width="83" height="34.333333333333336"/>
+                                                <color key="backgroundColor" systemColor="lightTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="지역"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adh-YK-nuL">
+                                                <rect key="frame" x="91" y="3" width="83" height="34.333333333333336"/>
+                                                <color key="backgroundColor" systemColor="lightTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="주변맛집"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h4-7N-EjA">
+                                                <rect key="frame" x="182" y="3" width="83" height="34.333333333333336"/>
+                                                <color key="backgroundColor" systemColor="lightTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="관광명소"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQL-Js-YXd">
+                                                <rect key="frame" x="273" y="3" width="83" height="34.333333333333336"/>
+                                                <color key="backgroundColor" systemColor="lightTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="숙소"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2y-8H-3zg">
+                                                <rect key="frame" x="364" y="3" width="83" height="34.333333333333336"/>
+                                                <color key="backgroundColor" systemColor="lightTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="숙소"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="sz2-Le-gDp" secondAttribute="trailing" id="9La-b7-c9d"/>
+                                    <constraint firstAttribute="bottom" secondItem="sz2-Le-gDp" secondAttribute="bottom" id="CPz-LB-oT2"/>
+                                    <constraint firstItem="sz2-Le-gDp" firstAttribute="top" secondItem="Qoq-h9-ynW" secondAttribute="top" id="Dd6-ii-6B5"/>
+                                    <constraint firstItem="sz2-Le-gDp" firstAttribute="height" secondItem="Qoq-h9-ynW" secondAttribute="height" id="Mes-ak-kPc"/>
+                                    <constraint firstAttribute="height" constant="40" id="VOk-uL-UIC"/>
+                                    <constraint firstItem="sz2-Le-gDp" firstAttribute="leading" secondItem="Qoq-h9-ynW" secondAttribute="leading" id="oPB-Pb-weR"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="VmX-9T-sdW"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Nhy-zT-Yo8"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VF-E0-dTq">
+                                <rect key="frame" x="327.33333333333331" y="126" width="49.666666666666686" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="aaw-Lq-MkG"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <imageReference key="image" image="arrow.turn.up.right" catalog="system" symbolScale="large"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fai-ar-cAh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ElT-Xm-TsZ"/>
+                            <constraint firstItem="9VF-E0-dTq" firstAttribute="leading" secondItem="Fai-ar-cAh" secondAttribute="trailing" symbolic="YES" id="FBf-4d-cpJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9VF-E0-dTq" secondAttribute="trailing" constant="16" id="Y8s-5G-uSS"/>
+                            <constraint firstItem="Qoq-h9-ynW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gxc-p6-dle"/>
+                            <constraint firstItem="Qoq-h9-ynW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tU0-LX-MEg"/>
+                            <constraint firstItem="9VF-E0-dTq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="udm-u6-AV1"/>
+                            <constraint firstItem="Fai-ar-cAh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vjN-iC-c23"/>
+                            <constraint firstItem="Qoq-h9-ynW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="72" id="vvj-0X-PgE"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="xD9-m0-W2q"/>
+                    <tabBarItem key="tabBarItem" title="지도" image="map" catalog="system" id="xD9-m0-W2q"/>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="8ek-ZH-Ihl"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1651" y="775"/>
+            <point key="canvasLocation" x="-1385.4961832061067" y="774.64788732394368"/>
         </scene>
         <!--Item-->
         <scene sceneID="cLi-Nt-pPx">
@@ -57,6 +139,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ap1-v6-35p" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jxh-8o-4ci">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -101,8 +184,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.turn.up.right" catalog="system" width="128" height="99"/>
+        <image name="map" catalog="system" width="128" height="112"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="lightTextColor">
+            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.38039215686274508" green="0.33333333333333331" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
