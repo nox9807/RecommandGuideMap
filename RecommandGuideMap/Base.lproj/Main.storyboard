@@ -242,7 +242,7 @@
             </objects>
             <point key="canvasLocation" x="257" y="42"/>
         </scene>
-        <!--Item-->
+        <!--테마 지도-->
         <scene sceneID="NiI-11-t84">
             <objects>
                 <viewController id="CTG-DE-0Kh" sceneMemberID="viewController">
@@ -265,7 +265,7 @@
                             <constraint firstItem="SUF-8S-ikV" firstAttribute="top" secondItem="qKD-9t-s5a" secondAttribute="top" constant="260" id="EBC-A0-WyM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="jfN-ra-c3K"/>
+                    <tabBarItem key="tabBarItem" title="테마 지도" image="map.fill" catalog="system" id="jfN-ra-c3K"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9W-m7-R0N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
