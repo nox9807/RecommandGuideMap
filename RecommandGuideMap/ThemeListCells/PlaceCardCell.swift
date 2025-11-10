@@ -17,8 +17,8 @@ final class PlaceCardCell: UICollectionViewCell {
     @IBOutlet weak var descLabel: UILabel!   
     @IBOutlet weak var mapButton: UIButton!
     
-    var onMap: ((Place) -> Void)?
-    private var currentPlace: Place?
+    var onMap: ((Location) -> Void)?
+    private var currentPlace: Location?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +26,7 @@ final class PlaceCardCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
     }
     
-    func configure(place: Place) {
+    func configure(place: Location) {
         currentPlace = place
         
         imageView.image   = place.photo

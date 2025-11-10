@@ -9,7 +9,7 @@ import UIKit
 import NMapsMap
 
 final class PlaceMapViewController: UIViewController {
-    var place: Place!
+    var place: Location!
     
     override func viewDidLoad() {
         super.viewDidLoad()

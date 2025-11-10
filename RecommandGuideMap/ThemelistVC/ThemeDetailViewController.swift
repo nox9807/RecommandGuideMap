@@ -79,7 +79,7 @@ extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionVie
 
 // MARK: - 지도 이동
 private extension ThemeDetailViewController {
-    func openOnMap(place: Place) {
+    func openOnMap(place: Location) {
         let vc = PlaceMapViewController()
         vc.place = place
         navigationController?.pushViewController(vc, animated: true)
