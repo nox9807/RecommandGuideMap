@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
     
     let manager = CLLocationManager()
     
-    // 기존 mapView만으로 지도를 구현했는데 showLoactionButton이 NMFNaverMapView에서만 제공되는 API라 NMFNaverMapView를 루트로 쓰고 내부의 실제 지도는 mapView: NMFMapView로 읽기 전용 계싼 프로퍼티로 기존코드를 그대로 사용
+    // 기존 mapView만으로 지도를 구현했는데 showLoactionButton이 NMFNaverMapView에서만 제공되는 API라 NMFNaverMapView를 루트로 쓰고 내부의 실제 지도는 mapView: NMFMapView로 읽기 전용 계산 프로퍼티로 기존코드를 그대로 사용
     private var naverMapView: NMFNaverMapView!
     private var mapView: NMFMapView { naverMapView.mapView }
     
