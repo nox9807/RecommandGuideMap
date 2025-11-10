@@ -13,8 +13,8 @@ final class PlaceCardCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var metaLabel: UILabel!     // 거리 · 주소 등 간단 메타
-    @IBOutlet weak var descLabel: UILabel!     // 간략 소개
+    @IBOutlet weak var metaLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!   
     @IBOutlet weak var mapButton: UIButton!
     
     var onMap: ((Place) -> Void)?
@@ -22,7 +22,7 @@ final class PlaceCardCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentView.layer.cornerRadius = 0      // 상세는 풀스크린 카드이므로 0
+        contentView.layer.cornerRadius = 0
         contentView.layer.masksToBounds = true
     }
     

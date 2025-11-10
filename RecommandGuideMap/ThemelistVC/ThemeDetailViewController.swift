@@ -10,21 +10,20 @@ import UIKit
 final class ThemeDetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var theme: Theme!
+    var theme: Theme!
     
-    static func instantiate(theme: Theme) -> ThemeDetailViewController {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ThemeDetailViewController") as! ThemeDetailViewController
-        vc.theme = theme
-        return vc
-    }
+//    static func instantiate(theme: Theme) -> ThemeDetailViewController {
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "ThemeDetailViewController") as! ThemeDetailViewController
+//        vc.theme = theme
+//        return vc
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.hidesBottomBarWhenPushed = true
         
-        // 네비게이션 바 표시 + 투명화(이미지 위로 화살표만)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         
         let ap = UINavigationBarAppearance()

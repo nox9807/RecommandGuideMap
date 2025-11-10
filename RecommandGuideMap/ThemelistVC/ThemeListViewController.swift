@@ -10,7 +10,7 @@ import UIKit
 final class ThemeListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var themes: [Theme] = []
+    var themes: [Theme] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +76,25 @@ final class ThemeListViewController: UIViewController {
         section.interGroupSpacing = 8
         return UICollectionViewCompositionalLayout(section: section)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showDetailSegue",
+              let dest = segue.destination as? ThemeDetailViewController else { return }
+        
+        if let cell = sender as? UICollectionViewCell,
+           let indexPath = collectionView.indexPath(for: cell) {
+            dest.theme = themes[indexPath.item]
+            dest.hidesBottomBarWhenPushed = true
+            return
+        }
+        
+        if let indexPath = collectionView.indexPathsForSelectedItems?.first {
+            dest.theme = themes[indexPath.item]
+            dest.hidesBottomBarWhenPushed = true
+        }
+    }
+
+    
 }
 
 extension ThemeListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -87,10 +106,5 @@ extension ThemeListViewController: UICollectionViewDataSource, UICollectionViewD
         return cell
     }
     
-    func collectionView(_ cv: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ThemeDetailViewController.instantiate(theme: themes[indexPath.item])
-        // 상세에서 탭바 숨길 것이므로, 여기서 따로 손댈 필요 X
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
