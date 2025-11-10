@@ -16,3 +16,5 @@ struct Place: Codable, Hashable {
     let lng: Double
     let imageURL: String?   // 대표 사진 하나만
 }
+
+

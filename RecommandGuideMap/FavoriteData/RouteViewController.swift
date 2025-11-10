@@ -1,7 +1,7 @@
 import UIKit
 
 // 더미 모델 (나중에 팀원 데이터로 교체 예정)
-struct RouteFavorite {
+struct RouteSummary {
     let origin: String
     let destination: String
     let categoryCounts: [String:Int] // 예: ["관광명소":3, "식당":2, "숙박":1]
@@ -21,10 +21,10 @@ class RouteViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //  더미 데이터 (나중에 Store에서 주입받을 예정)
-    private var routes: [RouteFavorite] = [
-        RouteFavorite(origin: "강원도 심곡리", destination: "정동진 호텔",
+    private var routes: [RouteSummary] = [
+        RouteSummary(origin: "강원도 심곡리", destination: "정동진 호텔",
                       categoryCounts: ["관광명소":3, "식당":2, "숙박":1]),
-        RouteFavorite(origin: "홍대입구", destination: "남산 타워",
+        RouteSummary(origin: "홍대입구", destination: "남산 타워",
                       categoryCounts: ["관광명소":2, "식당":1, "숙박":0]),
     ]
     
