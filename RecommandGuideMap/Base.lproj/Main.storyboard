@@ -276,6 +276,7 @@
         <image name="arrow.turn.up.right" catalog="system" width="128" height="99"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="99"/>
         <image name="map" catalog="system" width="128" height="112"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
