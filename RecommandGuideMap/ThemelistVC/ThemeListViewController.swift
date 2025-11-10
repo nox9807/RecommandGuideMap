@@ -30,13 +30,13 @@ final class ThemeListViewController: UIViewController {
     
     // 더미 데이터 (에셋: "ksup", "lpBar")
     private func mockData() -> [Theme] {
-        let place1 = Place(
+        let place1 = Location(
             id: "p1", name: "콜트레인", rating: 4.5,
             distanceText: "7.5km · 서울 중구 충무로3가", address: "서울 중구 충무로3가",
             description: "LP와 재즈가 흐르는 감성 바",
             photo: UIImage(named: "ksup")!, lat: 37.561, lng: 126.986
         )
-        let place2 = Place(
+        let place2 = Location(
             id: "p2", name: "페이지스", rating: 4.3,
             distanceText: "3.2km · 서울 마포구", address: "서울 마포구",
             description: "잔잔한 대화하기 좋은 곳",

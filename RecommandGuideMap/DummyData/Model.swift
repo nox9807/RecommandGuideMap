@@ -12,10 +12,10 @@ struct Theme {
     let title: String
     let coverURL: URL        // 리스트 카드 썸네일(원격 이미지)
     let viewCount: Int
-    let places: [Place]
+    let places: [Location]
 }
 
-struct Place {
+struct Location {
     let id: String
     let name: String
     let rating: Double
