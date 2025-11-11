@@ -1,31 +1,28 @@
 import UIKit
 
-// 더미 모델 (나중에 팀원 데이터로 교체 예정)
-struct RouteSummary {
-    let origin: String
-    let destination: String
-    let categoryCounts: [String:Int] // 예: ["관광명소":3, "식당":2, "숙박":1]
-    
-    var summaryText: String {
-        // 0개는 표시 생략
-        categoryCounts
-            .filter { $0.value > 0 }
-            .sorted { $0.key < $1.key } // 보기 좋게 정렬(선택)
-            .map { "\($0.key) \($0.value)개" }
-            .joined(separator: " · ")
-    }
-}
+
 
 class RouteViewController: UIViewController {
     
+    var route: RouteSummary!
+    
     @IBOutlet weak var tableView: UITableView!
     
-    //  더미 데이터 (나중에 Store에서 주입받을 예정)
     private var routes: [RouteSummary] = [
-        RouteSummary(origin: "강원도 심곡리", destination: "정동진 호텔",
-                      categoryCounts: ["관광명소":3, "식당":2, "숙박":1]),
-        RouteSummary(origin: "홍대입구", destination: "남산 타워",
-                      categoryCounts: ["관광명소":2, "식당":1, "숙박":0]),
+        RouteSummary(
+            title: "강원도 해안 루트",
+            origin: RoutePlace(name: "강원도 심곡리", lat: 37.68, lng: 129.04),
+            waypoints: [],
+            destination: RoutePlace(name: "정동진 호텔", lat: 37.689, lng: 129.034),
+            categoryCounts: ["관광명소":3, "식당":2, "숙박":1]
+        ),
+        RouteSummary(
+            title: "서울 중심 투어",
+            origin: RoutePlace(name: "홍대입구", lat: 37.556, lng: 126.923),
+            waypoints: [],
+            destination: RoutePlace(name: "남산 타워", lat: 37.551, lng: 126.988),
+            categoryCounts: ["관광명소":2, "식당":1, "숙박":0]
+        )
     ]
     
     override func viewDidLoad() {
@@ -53,6 +50,13 @@ extension RouteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // TODO: 상세 보기로 push/present
+        
+        let storyboard = UIStoryboard(name: "Favorite", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "RouteDetailViewController")
+                as? RouteDetailViewController else { return }
+        
+        vc.route = routes[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
+
 }

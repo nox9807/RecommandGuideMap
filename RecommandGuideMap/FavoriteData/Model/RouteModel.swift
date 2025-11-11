@@ -1,7 +1,7 @@
 import Foundation
 import CoreLocation
 
-struct RouteFavorite {
+struct RouteRouteDetailPlaceFavorite {
     var title: String
     var origin: RoutePlace
     var waypoints: [RoutePlace]
@@ -9,10 +9,12 @@ struct RouteFavorite {
     var polyline: [CLLocationCoordinate2D]
 }
 
-struct RoutePlace {
+struct RouteDetailPlace {
     var name: String
     var address: String
     var lat: Double
     var lng: Double
     var thumbnailName: String?
 }
+
+
