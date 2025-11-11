@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class PlaceCardCell: UICollectionViewCell {
-    static let reuseID = "PlaceCardCell"
+final class LocationCardCell: UICollectionViewCell {
+    static let reuseID = "LocationCardCell"
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -26,14 +26,14 @@ final class PlaceCardCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
     }
     
-    func configure(place: Location) {
-        currentPlace = place
+    func configure(location: Location) {
+        currentPlace = location
         
-        imageView.image   = place.photo
-        nameLabel.text    = place.name
-        ratingLabel.text  = "★ \(place.rating)"
-        metaLabel.text    = place.distanceText
-        descLabel.text    = place.description
+        imageView.image   = location.photo
+        nameLabel.text    = location.name
+        ratingLabel.text  = "★ \(location.rating)"
+        metaLabel.text    = location.distanceText
+        descLabel.text    = location.description
     }
     
     @IBAction func didTapMap() {

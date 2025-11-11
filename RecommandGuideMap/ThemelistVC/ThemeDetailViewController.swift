@@ -66,12 +66,12 @@ final class ThemeDetailViewController: UIViewController {
 }
 
 extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ cv: UICollectionView, numberOfItemsInSection section: Int) -> Int { theme.places.count }
+    func collectionView(_ cv: UICollectionView, numberOfItemsInSection section: Int) -> Int { theme.locations.count }
     
     func collectionView(_ cv: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = cv.dequeueReusableCell(withReuseIdentifier: PlaceCardCell.reuseID, for: indexPath) as! PlaceCardCell
-        let place = theme.places[indexPath.item]
-        cell.configure(place: place)
+        let cell = cv.dequeueReusableCell(withReuseIdentifier: LocationCardCell.reuseID, for: indexPath) as! LocationCardCell
+        let locationAt = theme.locations[indexPath.item]
+        cell.configure(location: locationAt)
         cell.onMap = { [weak self] p in self?.openOnMap(place: p) }
         return cell
     }
@@ -80,8 +80,8 @@ extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionVie
 // MARK: - 지도 이동
 private extension ThemeDetailViewController {
     func openOnMap(place: Location) {
-        let vc = PlaceMapViewController()
-        vc.place = place
+        let vc = LocationMapViewController()
+        vc.location = place
         navigationController?.pushViewController(vc, animated: true)
     }
 }

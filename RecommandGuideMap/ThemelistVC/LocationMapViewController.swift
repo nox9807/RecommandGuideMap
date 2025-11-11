@@ -8,8 +8,8 @@
 import UIKit
 import NMapsMap
 
-final class PlaceMapViewController: UIViewController {
-    var place: Location!
+final class LocationMapViewController: UIViewController {
+    var location: Location!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +17,11 @@ final class PlaceMapViewController: UIViewController {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mapView)
         
-        let pos = NMGLatLng(lat: place.lat, lng: place.lng)
+        let pos = NMGLatLng(lat: location.lat, lng: location.lng)
         mapView.moveCamera(NMFCameraUpdate(scrollTo: pos, zoomTo: 16))
         
         let marker = NMFMarker(position: pos)
-        marker.captionText = place.name
+        marker.captionText = location.name
         marker.mapView = mapView
     }
 }

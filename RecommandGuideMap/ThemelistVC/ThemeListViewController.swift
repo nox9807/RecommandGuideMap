@@ -48,14 +48,14 @@ final class ThemeListViewController: UIViewController {
             title: "음악에 취해 한잔하기 좋은 뮤직바",
             coverURL: URL(string: "https://picsum.photos/seed/t1/1200/800")!,
             viewCount: 718,
-            places: [place1, place2]
+            locations: [place1, place2]
         )
         let theme2 = Theme(
             id: "t2",
             title: "여기가 한국이라고? 이국 감성 거리",
             coverURL: URL(string: "https://picsum.photos/seed/t2/1200/800")!,
             viewCount: 668,
-            places: [place2, place1]
+            locations: [place2, place1]
         )
         return [theme1, theme2]
     }
