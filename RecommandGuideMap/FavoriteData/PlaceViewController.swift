@@ -55,6 +55,16 @@ extension PlaceViewController: UITableViewDataSource, UITableViewDelegate {
         return 200  // 셀 높이 (원하면 조정 가능)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "RouteDetailViewController")
+                as? RouteDetailViewController else { return }
+        
+        vc.route = RouteDummyData.samples[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    
     
 }
 
