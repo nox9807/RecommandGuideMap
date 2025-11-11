@@ -9,6 +9,76 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="Ml7-eU-iKI">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="Xn0-Jt-Svg" customClass="SearchViewController" customModule="RecommandGuideMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iDt-6l-vBJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="장소,버스,지하철,주소 검색" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WB6-hf-BMv">
+                                <rect key="frame" x="40" y="59" width="353" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="pRf-BV-dg7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfW-pa-Doa">
+                                <rect key="frame" x="0.0" y="59" width="39.666666666666664" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Loq-wf-oQu"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="Xn0-Jt-Svg" eventType="touchUpInside" id="qk0-IE-hln"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GjK-xd-74Y">
+                                <rect key="frame" x="0.0" y="101" width="393" height="751"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="zhO-mU-aOc">
+                                        <rect key="frame" x="0.0" y="50.333333969116211" width="393" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zhO-mU-aOc" id="nPu-ia-fR9">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xn0-Jt-Svg" id="htT-LP-uSV"/>
+                                    <outlet property="delegate" destination="Xn0-Jt-Svg" id="afn-2y-xw4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4h7-Ut-0GJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WB6-hf-BMv" firstAttribute="trailing" secondItem="4h7-Ut-0GJ" secondAttribute="trailing" id="2gt-4M-Hfb"/>
+                            <constraint firstItem="WB6-hf-BMv" firstAttribute="leading" secondItem="EfW-pa-Doa" secondAttribute="trailing" constant="0.33000000000000002" id="4gd-Aw-4q7"/>
+                            <constraint firstItem="EfW-pa-Doa" firstAttribute="leading" secondItem="4h7-Ut-0GJ" secondAttribute="leading" id="6aO-WZ-5mb"/>
+                            <constraint firstItem="GjK-xd-74Y" firstAttribute="leading" secondItem="4h7-Ut-0GJ" secondAttribute="leading" id="NDN-vL-Xxt"/>
+                            <constraint firstItem="GjK-xd-74Y" firstAttribute="trailing" secondItem="4h7-Ut-0GJ" secondAttribute="trailing" id="OtS-lL-lfe"/>
+                            <constraint firstItem="WB6-hf-BMv" firstAttribute="top" secondItem="4h7-Ut-0GJ" secondAttribute="top" id="PLs-MA-Eyd"/>
+                            <constraint firstItem="EfW-pa-Doa" firstAttribute="top" secondItem="4h7-Ut-0GJ" secondAttribute="top" id="Uau-xK-sGo"/>
+                            <constraint firstItem="GjK-xd-74Y" firstAttribute="top" secondItem="WB6-hf-BMv" secondAttribute="bottom" constant="8" symbolic="YES" id="nt7-GD-6Nw"/>
+                            <constraint firstAttribute="bottom" secondItem="GjK-xd-74Y" secondAttribute="bottom" id="x3F-Jd-6dn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="WB6-hf-BMv" id="orW-pJ-YsT"/>
+                        <outlet property="tableView" destination="GjK-xd-74Y" id="Ccu-nI-Epf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQl-Tp-9RC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125.95419847328243" y="853.52112676056345"/>
+        </scene>
         <!--지도-->
         <scene sceneID="0Nr-pu-bZO">
             <objects>
@@ -17,17 +87,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="검색어를 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="YBR-tG-WW2">
-                                <rect key="frame" x="16" y="118" width="311.33333333333331" height="64"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="Dlw-62-shY" id="m1M-ff-FID"/>
-                                </connections>
-                            </searchBar>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqr-Qn-Mzr" customClass="TouchScrollView" customModule="RecommandGuideMap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="190" width="393" height="40"/>
                                 <subviews>
@@ -97,6 +156,17 @@
                                     <segue destination="k7M-Pv-XNc" kind="presentation" modalPresentationStyle="fullScreen" id="ad5-Ya-npt"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" placeholder="검색어를 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="YBR-tG-WW2">
+                                <rect key="frame" x="16" y="118" width="311.33333333333331" height="64"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Dlw-62-shY" id="m1M-ff-FID"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pZb-2K-bC2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -117,11 +187,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scrollView" destination="Iqr-Qn-Mzr" id="Hgq-cy-ZRj"/>
+                        <outlet property="searchBar" destination="YBR-tG-WW2" id="ReP-1e-qU4"/>
+                        <segue destination="Xn0-Jt-Svg" kind="presentation" identifier="ShowSearch" modalPresentationStyle="fullScreen" id="zkU-Ns-VMD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ShG-cb-v5s" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="105"/>
+            <point key="canvasLocation" x="127.48091603053435" y="104.92957746478874"/>
         </scene>
         <!--Directions View Controller-->
         <scene sceneID="8gV-m2-Ozu">
@@ -210,6 +282,7 @@
     <resources>
         <image name="arrow.turn.up.right" catalog="system" width="128" height="99"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="99"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="map" catalog="system" width="128" height="112"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
