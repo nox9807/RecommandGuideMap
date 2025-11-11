@@ -13,12 +13,16 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let manager = CLLocationManager()
+    var isFollowingUser: Bool = true
+    var items: [SearchResponse.SearchItem] = []
     
     // 기존 mapView만으로 지도를 구현했는데 showLoactionButton이 NMFNaverMapView에서만 제공되는 API라 NMFNaverMapView를 루트로 쓰고 내부의 실제 지도는 mapView: NMFMapView로 읽기 전용 계산 프로퍼티로 기존코드를 그대로 사용
     private var naverMapView: NMFNaverMapView!
     private var mapView: NMFMapView { naverMapView.mapView }
-    
+    private var marker: NMFMarker?
     private var locationOverlay: NMFLocationOverlay!
     
     override func viewDidLoad() {
@@ -35,13 +39,60 @@ class MapViewController: UIViewController {
         view.addSubview(naverMapView)
         view.sendSubviewToBack(naverMapView)
         
+        mapView.positionMode = .normal
+        
         locationOverlay = mapView.locationOverlay
         locationOverlay.hidden = false
         
+        searchBar.backgroundImage = UIImage()
+        //searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func presentSearch() {
+        let vc = storyboard?.instantiateViewController(identifier: "SearchViewController") as! SearchViewController
+        vc.modalPresentationStyle = .overFullScreen
+        vc.onSelect = { [weak self] item in
+            self?.focus(mapx: item.mapx, mapy: item.mapy, title: item.title)
+        }
+        present(vc, animated: true)
+    }
+    
+    func focus(mapx: String, mapy: String, title: String) {
+        guard let x = tm128Double(from: mapx),
+              let y = tm128Double(from: mapy) else { return }
+        
+        isFollowingUser = false
+        
+        let latLng = NMGLatLng(lat: y, lng: x)
+        
+        let cameraUpdate = NMFCameraUpdate(scrollTo: latLng)
+        cameraUpdate.animation = .easeIn
+        mapView.moveCamera(cameraUpdate)
+        
+        marker?.mapView = nil
+        let m = NMFMarker(position: latLng)
+        m.mapView = mapView
+        marker = m
+    }
+    
+    func tm128Double(from raw: String, Digits: Int = 7) -> Double? {
+        let digits = raw.filter(\.isNumber)
+        guard !digits.isEmpty else { return nil }
+        
+        if digits.count <= Digits {
+            let frac = String(repeating: "0", count: Digits - digits.count) + digits
+            return Double("0.\(frac)")
+        } else {
+            let splitIdx = digits.index(digits.endIndex, offsetBy: -Digits)
+            let frontPart = String(digits[..<splitIdx])
+            let backPart = String(digits[splitIdx...])
+            
+            return Double("\(frontPart).\(backPart)")
+        }
     }
     
     // MARK: -알림 표시(위치 서비스를 비활성화 했을 때)
@@ -87,15 +138,16 @@ extension MapViewController: CLLocationManagerDelegate {
         }
     }
     
-    // MARK: location이 업데이트 될때마다 위치 변경
+    // MARK: 현재위치를 가져오는 메소드
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let last = locations.last else { return }
         let coord = last.coordinate
         let target = NMGLatLng(lat: coord.latitude, lng: coord.longitude)
-        
+        print("메소드")
         DispatchQueue.main.async {
             self.locationOverlay.location = target
             print(self.locationOverlay.location)
+            guard self.isFollowingUser else { return }
             
             let cameraUpdate = NMFCameraUpdate(scrollTo: target)
             cameraUpdate.animation = .easeIn
@@ -111,5 +163,30 @@ extension MapViewController: CLLocationManagerDelegate {
         
         print(error)
         manager.stopUpdatingLocation()
+    }
+}
+
+// MARK: - UISearchBarDelegate구현
+extension MapViewController: UISearchBarDelegate {
+    // editing을 false로 만들고 서치바를 누르면 서치페이지가 프레젠트되게함
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        performSegue(withIdentifier: "ShowSearch", sender: self)
+        presentSearch()
+        return false
+    }
+}
+
+extension MapViewController: NMFMapViewCameraDelegate {
+    func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
+        switch reason {
+            case NMFMapChangedByGesture:
+                isFollowingUser = false
+            case NMFMapChangedByControl:
+                if mapView.positionMode == .normal || mapView.positionMode == .direction || mapView.positionMode == .compass {
+                    isFollowingUser = true
+                }
+            default:
+                break
+        }
     }
 }
