@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Xcode" xmlns="http://www.topografix.com/GPX/1/1">
+    <metadata>
+        <name>BuPyeong Long Loop</name>
+    </metadata>
+    <trk>
+        <name>BuPyeong Walk</name>
+        <trkseg>
+            <!-- Start (부평 기준점) -->
+            <trkpt lat="37.500549" lon="126.733647"/>
+            <!-- 북쪽으로 ~+0.0020 (약 222m) 를 5스텝 -->
+            <trkpt lat="37.500949" lon="126.733647"/>
+            <trkpt lat="37.501349" lon="126.733647"/>
+            <trkpt lat="37.501749" lon="126.733647"/>
+            <trkpt lat="37.502149" lon="126.733647"/>
+            <trkpt lat="37.502549" lon="126.733647"/>
+            
+            <!-- 동쪽으로 ~+0.0030 (약 264m) 를 5스텝 -->
+            <trkpt lat="37.502549" lon="126.734247"/>
+            <trkpt lat="37.502549" lon="126.734847"/>
+            <trkpt lat="37.502549" lon="126.735447"/>
+            <trkpt lat="37.502549" lon="126.736047"/>
+            <trkpt lat="37.502549" lon="126.736647"/>
+            
+            <!-- 남쪽으로 원점 위도까지 5스텝 -->
+            <trkpt lat="37.502149" lon="126.736647"/>
+            <trkpt lat="37.501749" lon="126.736647"/>
+            <trkpt lat="37.501349" lon="126.736647"/>
+            <trkpt lat="37.500949" lon="126.736647"/>
+            <trkpt lat="37.500549" lon="126.736647"/>
+            
+            <!-- 서쪽으로 시작점 경도까지 5스텝 (루프 완성) -->
+            <trkpt lat="37.500549" lon="126.736047"/>
+            <trkpt lat="37.500549" lon="126.735447"/>
+            <trkpt lat="37.500549" lon="126.734847"/>
+            <trkpt lat="37.500549" lon="126.734247"/>
+            <trkpt lat="37.500549" lon="126.733647"/>
+        </trkseg>
+    </trk>
+</gpx>
