@@ -36,7 +36,7 @@ class FavoriteModalViewController: UIViewController {
         currentChild?.removeFromParent()
 
         // 새 자식 불러오기
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Favorite", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: name) as? UIViewController else { return }
 
         addChild(vc)
