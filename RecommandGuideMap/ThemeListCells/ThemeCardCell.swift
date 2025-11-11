@@ -26,7 +26,7 @@ final class ThemeCardCell: UICollectionViewCell {
     }
     
     func configure(theme: Theme) {
-        coverImageView.setImage(url: theme.coverURL)
+        coverImageView.image = theme.photo
         titleLabel.text = theme.title
     }
 }

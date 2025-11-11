@@ -10,7 +10,7 @@ import UIKit
 struct Theme {
     let id: String
     let title: String
-    let coverURL: URL        // 리스트 카드 썸네일(원격 이미지)
+    let photo: UIImage       
     let viewCount: Int
     let locations: [Location]
 }

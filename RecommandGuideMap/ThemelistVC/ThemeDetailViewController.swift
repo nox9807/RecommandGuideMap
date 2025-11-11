@@ -46,6 +46,8 @@ final class ThemeDetailViewController: UIViewController {
         // 사진을 화면 끝까지: 세로 조정 없음
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.alwaysBounceVertical = false
+        
+        print("registered identifiers?", collectionView.value(forKey: "_cellClassDict") ?? "n/a")
     }
     
     private func makeHorizontalPagerLayout() -> UICollectionViewCompositionalLayout {

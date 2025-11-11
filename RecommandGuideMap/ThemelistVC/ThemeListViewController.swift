@@ -31,31 +31,43 @@ final class ThemeListViewController: UIViewController {
     // 더미 데이터 (에셋: "ksup", "lpBar")
     private func mockData() -> [Theme] {
         let place1 = Location(
-            id: "p1", name: "콜트레인", rating: 4.5,
-            distanceText: "7.5km · 서울 중구 충무로3가", address: "서울 중구 충무로3가",
-            description: "LP와 재즈가 흐르는 감성 바",
-            photo: UIImage(named: "ksup")!, lat: 37.561, lng: 126.986
+            id: "p1", name: "바다회사랑", rating: 4.5,
+            distanceText: "7.5km · 서울 마포구 동교로27길 60", address: "서울 마포구 동교로27길 60",
+            description: "방어가 살아 숨쉬는 듯한 싱싱함. 겨울하면 생각나는 방어회 맛집",
+            photo: UIImage(named: "searawfish")!, lat: 37.561, lng: 126.986
         )
         let place2 = Location(
-            id: "p2", name: "페이지스", rating: 4.3,
-            distanceText: "3.2km · 서울 마포구", address: "서울 마포구",
-            description: "잔잔한 대화하기 좋은 곳",
-            photo: UIImage(named: "lpBar")!, lat: 37.549, lng: 126.914
+            id: "p2", name: "우래옥", rating: 4.9,
+            distanceText: "3.2km · 서울 중구 창경궁로 62-29", address: "서울 중구 창경궁로 62-29",
+            description: "80년 전통의 대한민국 최고의 평양냉면집. 우래옥만의 담백한 감칠맛을 경험해보세요. ",
+            photo: UIImage(named: "coldnoodle")!, lat: 37.549, lng: 126.914
+        )
+        let place3 = Location(
+            id: "p3", name: "보물섬 논현", rating: 4.3,
+            distanceText: "3.2km · 서울 강남구 테헤란로20길 11-1", address: "서울 강남구 테헤란로20길 11-1",
+            description: "강남 골목안 보물섬처럼 자리하고 있는 방어 맛집",
+            photo: UIImage(named: "island")!, lat: 37.549, lng: 126.914
+        )
+        let place4 = Location(
+            id: "p4", name: "금돼지식당", rating: 4.3,
+            distanceText: "3.2km · 서울 중구 다산로 149", address: "서울 중구 다산로 149",
+            description: "슈퍼스타 베컴도 다녀간 맛집. 서울 최고의 돼지고기를 경험해보세요!",
+            photo: UIImage(named: "goldpig")!, lat: 37.549, lng: 126.914
         )
         
         let theme1 = Theme(
             id: "t1",
-            title: "음악에 취해 한잔하기 좋은 뮤직바",
-            coverURL: URL(string: "https://picsum.photos/seed/t1/1200/800")!,
+            title: "겨울은 대방어의 계절! 서울 방어 맛집 모음",
+            photo: UIImage(named: "bigfish")!,
             viewCount: 718,
-            locations: [place1, place2]
+            locations: [place1, place3]
         )
         let theme2 = Theme(
             id: "t2",
-            title: "여기가 한국이라고? 이국 감성 거리",
-            coverURL: URL(string: "https://picsum.photos/seed/t2/1200/800")!,
+            title: "합리적인 가격대에 미쉐린이? ",
+            photo: UIImage(named: "michelin")!,
             viewCount: 668,
-            locations: [place2, place1]
+            locations: [place2, place4]
         )
         return [theme1, theme2]
     }
