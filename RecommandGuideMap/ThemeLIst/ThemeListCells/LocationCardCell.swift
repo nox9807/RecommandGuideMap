@@ -17,26 +17,23 @@ final class LocationCardCell: UICollectionViewCell {
     @IBOutlet weak var descLabel: UILabel!   
     @IBOutlet weak var mapButton: UIButton!
     
-    var onMap: ((Location) -> Void)?
-    private var currentPlace: Location?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentView.layer.cornerRadius = 0
         contentView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
     }
     
     func configure(location: Location) {
-        currentPlace = location
+        nameLabel.text   = location.name
+        ratingLabel.text = "★ \(String(format: "%.1f", location.rating))"
+        metaLabel.text   = location.distanceText
+        descLabel.text   = location.description
         
-        imageView.image   = location.photo
-        nameLabel.text    = location.name
-        ratingLabel.text  = "★ \(location.rating)"
-        metaLabel.text    = location.distanceText
-        descLabel.text    = location.description
-    }
-    
-    @IBAction func didTapMap() {
-        if let p = currentPlace { onMap?(p) }
+        if let img = location.photoImage {
+            imageView.image = img
+        } else {
+            imageView.setImage(url: location.photoURL, placeholder: UIImage(named: "placeholder"))
+        }
     }
 }

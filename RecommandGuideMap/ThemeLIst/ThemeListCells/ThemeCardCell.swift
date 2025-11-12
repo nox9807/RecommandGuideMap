@@ -18,7 +18,6 @@ final class ThemeCardCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 16
         contentView.layer.masksToBounds = true
         
-        // 그림자(선택)
         layer.shadowColor   = UIColor.black.cgColor
         layer.shadowOpacity = 0.15
         layer.shadowRadius  = 8
@@ -26,7 +25,11 @@ final class ThemeCardCell: UICollectionViewCell {
     }
     
     func configure(theme: Theme) {
-        coverImageView.image = theme.photo
         titleLabel.text = theme.title
+        if let img = theme.coverImage {
+            coverImageView.image = img
+        } else {
+            coverImageView.setImage(url: theme.coverURL, placeholder: UIImage(named: "placeholder"))
+        }
     }
 }
