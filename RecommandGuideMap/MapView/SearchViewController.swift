@@ -80,7 +80,6 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
         onSelect?(item) // 값을 전달
-        dismiss(animated: true)
     }
 }
 
