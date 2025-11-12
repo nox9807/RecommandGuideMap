@@ -161,14 +161,14 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print(#function, manager.authorizationStatus.rawValue)
         switch manager.authorizationStatus {
-            case .notDetermined: // 허가 상태 결정 안됨(설치 후 첫 실행)
+            case .notDetermined:
                 manager.requestWhenInUseAuthorization()
-            case .restricted: // 금지됨
+            case .restricted:
                 showAlert()
-            case .denied: // 거부됨
+            case .denied:
                 showAlert()
             case .authorizedAlways:
-                break
+                manager.startUpdatingLocation()
             case .authorizedWhenInUse:
                 manager.startUpdatingLocation() //시제로 위치정보를 요청하는 메소드
             @unknown default:
