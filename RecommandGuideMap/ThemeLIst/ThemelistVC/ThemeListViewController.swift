@@ -11,7 +11,6 @@ final class ThemeListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var themes: [Theme] = []
     
-    // 7개 카테고리
     private let categories: [(title: String, cat3: String)] = [
         ("한식", "A05020100"),
         ("일식", "A05020300"),
@@ -52,13 +51,12 @@ final class ThemeListViewController: UIViewController {
         return URL(string: "https://picsum.photos/seed/\(title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "cover")/1200/800")
     }
     
-    // MARK: - 데이터 로드 (SimpleTourAPI 사용)
     private func loadCategoryThemes() async {
         do {
             var newThemes: [Theme] = []
             
             for (title, code) in categories {
-                // ✅ [Location]을 바로 받음 (DTO 접근 X)
+                
                 let locations: [Location] = try await SimpleTourAPI.searchKeyword(title, rows: 10, page: 1)
                 
                 let cover = coverURL(for: locations.first?.photoURL?.absoluteString, fallbackSeed: title)
@@ -90,7 +88,6 @@ final class ThemeListViewController: UIViewController {
         }
     }
     
-    // segue로 상세로 넘어가는 경우 기존 로직 유지
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showDetailSegue",
               let dest = segue.destination as? ThemeDetailViewController else { return }
