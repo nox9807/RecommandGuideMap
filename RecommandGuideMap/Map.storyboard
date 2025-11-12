@@ -79,6 +79,78 @@
             </objects>
             <point key="canvasLocation" x="125.95419847328243" y="853.52112676056345"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="cE0-cN-7Id">
+            <objects>
+                <viewController id="fMe-g7-jrz" customClass="InfoViewController" customModule="RecommandGuideMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dUA-dx-agG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장소 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRS-4m-RwG">
+                                <rect key="frame" x="16" y="91" width="361" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QjB-R3-z9G"/>
+                                    <constraint firstAttribute="width" constant="361" id="wXI-d0-k7d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnm-5a-JEJ">
+                                <rect key="frame" x="16" y="222" width="54" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Y1t-Xw-961"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="출발"/>
+                                <connections>
+                                    <action selector="startButton:" destination="fMe-g7-jrz" eventType="touchUpInside" id="EAf-lK-aPw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7JF-6M-xK4">
+                                <rect key="frame" x="79" y="222" width="54" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="dgF-Lp-evM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="도착"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHt-R3-3g5">
+                                <rect key="frame" x="16" y="160" width="361" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="361" id="aWK-T2-6t1"/>
+                                    <constraint firstAttribute="height" constant="21" id="ksC-YS-vUG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zcO-R1-0zl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zcO-R1-0zl" firstAttribute="trailing" secondItem="LHt-R3-3g5" secondAttribute="trailing" constant="16" id="3qg-wk-pBu"/>
+                            <constraint firstItem="zcO-R1-0zl" firstAttribute="trailing" secondItem="GRS-4m-RwG" secondAttribute="trailing" constant="16" id="6qX-s4-XMp"/>
+                            <constraint firstItem="GRS-4m-RwG" firstAttribute="leading" secondItem="zcO-R1-0zl" secondAttribute="leading" constant="16" id="DV5-1A-dG6"/>
+                            <constraint firstItem="LHt-R3-3g5" firstAttribute="leading" secondItem="zcO-R1-0zl" secondAttribute="leading" constant="16" id="aTM-xe-geQ"/>
+                            <constraint firstItem="7JF-6M-xK4" firstAttribute="top" secondItem="LHt-R3-3g5" secondAttribute="bottom" constant="41" id="kjX-Df-nsv"/>
+                            <constraint firstItem="Wnm-5a-JEJ" firstAttribute="top" secondItem="LHt-R3-3g5" secondAttribute="bottom" constant="41" id="nfg-if-Q7D"/>
+                            <constraint firstItem="GRS-4m-RwG" firstAttribute="top" secondItem="zcO-R1-0zl" secondAttribute="top" constant="32" id="oNX-as-MzC"/>
+                            <constraint firstItem="LHt-R3-3g5" firstAttribute="top" secondItem="GRS-4m-RwG" secondAttribute="bottom" constant="29" id="qtr-WJ-jwh"/>
+                            <constraint firstItem="Wnm-5a-JEJ" firstAttribute="leading" secondItem="zcO-R1-0zl" secondAttribute="leading" constant="16" id="rZW-4K-hhQ"/>
+                            <constraint firstItem="7JF-6M-xK4" firstAttribute="leading" secondItem="Wnm-5a-JEJ" secondAttribute="trailing" constant="9" id="xKW-hJ-QPR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressTextLabel" destination="LHt-R3-3g5" id="00N-oI-UEd"/>
+                        <outlet property="placeTextLabel" destination="GRS-4m-RwG" id="eRg-UA-qwg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mse-Sm-KD7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980.91603053435108" y="858.45070422535218"/>
+        </scene>
         <!--지도-->
         <scene sceneID="0Nr-pu-bZO">
             <objects>
@@ -153,7 +225,7 @@
                                     <imageReference key="image" image="arrow.turn.up.right" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="k7M-Pv-XNc" kind="presentation" modalPresentationStyle="fullScreen" id="ad5-Ya-npt"/>
+                                    <segue destination="k7M-Pv-XNc" kind="presentation" identifier="" modalPresentationStyle="fullScreen" id="ad5-Ya-npt"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" placeholder="검색어를 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="YBR-tG-WW2">
@@ -189,6 +261,7 @@
                         <outlet property="scrollView" destination="Iqr-Qn-Mzr" id="Hgq-cy-ZRj"/>
                         <outlet property="searchBar" destination="YBR-tG-WW2" id="ReP-1e-qU4"/>
                         <segue destination="Xn0-Jt-Svg" kind="presentation" identifier="ShowSearch" modalPresentationStyle="fullScreen" id="zkU-Ns-VMD"/>
+                        <segue destination="fMe-g7-jrz" kind="presentation" identifier="ShowBottomSheet" modalPresentationStyle="pageSheet" id="ZZT-oF-3v4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ShG-cb-v5s" sceneMemberID="firstResponder"/>
@@ -294,10 +367,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.38039215686274508" green="0.33333333333333331" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

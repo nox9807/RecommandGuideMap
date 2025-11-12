@@ -9,6 +9,9 @@ class RouteCell: UITableViewCell {
     func configure(with route: RouteSummary) {
         titleLabel.text = route.title
         summaryLabel.text = route.summaryText
-    }
+        
+        // 아이콘 설정
+        iconImageView?.image = UIImage(systemName: "bookmark.fill")
+        iconImageView?.tintColor = .systemBlue    }
 }
 

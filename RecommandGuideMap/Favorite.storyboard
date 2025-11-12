@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
-        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -142,13 +141,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="a09-cB-5B7">
                                                     <rect key="frame" x="78" y="55" width="43.333333333333343" height="39.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4m-T6-xZe">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4m-T6-xZe">
                                                             <rect key="frame" x="0.0" y="0.0" width="43.333333333333336" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJG-OB-01h">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJG-OB-01h">
                                                             <rect key="frame" x="0.0" y="21.333333333333329" width="43.333333333333336" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -205,40 +204,57 @@
                     <view key="view" contentMode="scaleToFill" id="1eB-2W-mgt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uok-Bp-dJg">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
-                            </mapView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mt7-pY-CNo">
-                                <rect key="frame" x="0.0" y="698" width="393" height="120"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" identifier="bottomSheetHeight" id="6Ny-I1-yHw"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NDg-YJ-hlP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="mt7-pY-CNo" firstAttribute="bottom" secondItem="NDg-YJ-hlP" secondAttribute="bottom" id="7fI-HH-1ng"/>
-                            <constraint firstItem="NDg-YJ-hlP" firstAttribute="trailing" secondItem="mt7-pY-CNo" secondAttribute="trailing" id="Bjh-Rc-Rbx"/>
-                            <constraint firstItem="uok-Bp-dJg" firstAttribute="leading" secondItem="NDg-YJ-hlP" secondAttribute="leading" id="C6E-Wg-zK4"/>
-                            <constraint firstItem="NDg-YJ-hlP" firstAttribute="trailing" secondItem="uok-Bp-dJg" secondAttribute="trailing" id="SbM-dl-c3O"/>
-                            <constraint firstItem="NDg-YJ-hlP" firstAttribute="bottom" secondItem="uok-Bp-dJg" secondAttribute="bottom" id="WHJ-B1-TJD"/>
-                            <constraint firstItem="mt7-pY-CNo" firstAttribute="leading" secondItem="NDg-YJ-hlP" secondAttribute="leading" id="Wgr-eV-1AJ"/>
-                            <constraint firstItem="uok-Bp-dJg" firstAttribute="top" secondItem="NDg-YJ-hlP" secondAttribute="top" id="dco-Dk-dRM"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zXU-Uo-n6e"/>
                     <connections>
-                        <outlet property="bottomSheet" destination="mt7-pY-CNo" id="niK-oL-klA"/>
-                        <outlet property="bottomSheetHeight" destination="6Ny-I1-yHw" id="tzz-h0-mYn"/>
+                        <segue destination="8m8-44-1Yo" kind="presentation" modalPresentationStyle="pageSheet" id="I7I-lf-PKf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0j-Vy-vca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5963" y="775"/>
+            <point key="canvasLocation" x="5962.5954198473282" y="774.64788732394368"/>
+        </scene>
+        <!--Bottom Sheet View Controller-->
+        <scene sceneID="oV8-bf-WgH">
+            <objects>
+                <viewController storyboardIdentifier="BottomSheetVC" id="8m8-44-1Yo" customClass="BottomSheetViewController" customModule="RecommandGuideMap" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wNA-K4-NSA">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd7-6H-V63">
+                                <rect key="frame" x="20" y="79" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-23-eIc">
+                                <rect key="frame" x="321" y="79" width="52" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system">
+                                    <color key="baseForegroundColor" name="Color"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vIl-Na-svv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pd7-6H-V63" firstAttribute="leading" secondItem="vIl-Na-svv" secondAttribute="leading" constant="20" id="C90-dV-fSJ"/>
+                            <constraint firstItem="vIl-Na-svv" firstAttribute="trailing" secondItem="1NX-23-eIc" secondAttribute="trailing" constant="20" id="eta-X8-tvG"/>
+                            <constraint firstItem="Pd7-6H-V63" firstAttribute="top" secondItem="vIl-Na-svv" secondAttribute="top" constant="20" id="f0x-8X-u18"/>
+                            <constraint firstItem="1NX-23-eIc" firstAttribute="top" secondItem="vIl-Na-svv" secondAttribute="top" constant="20" id="g2f-FA-bsf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="Pd7-6H-V63" id="M2h-L2-eja"/>
+                        <outlet property="starButton" destination="1NX-23-eIc" id="ale-hg-Xum"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="biE-X1-Dhc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6689" y="775"/>
         </scene>
         <!--Favorite Modal View Controller-->
         <scene sceneID="QsH-5b-vW5">
@@ -297,6 +313,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <namedColor name="Color">
+            <color red="0.3059999942779541" green="0.3880000114440918" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
