@@ -12,10 +12,6 @@ class RouteDetailViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - 데이터
     var route: RouteSummary?   // <- 옵셔널로
     
-    // MARK: - 바텀 시트
-    @IBOutlet weak var bottomSheet: UIView!
-    @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
-    
     // MARK: - 생명주기
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +20,6 @@ class RouteDetailViewController: UIViewController, CLLocationManagerDelegate {
         setupMap()
         setupLocation()
         setupCloseButton()
-        setupPanGesture()
-        setupSheetShadow()
         
         //  route가 있으면 경로만 그리기
         if let route = route {
@@ -33,9 +27,6 @@ class RouteDetailViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             print("⚠️ route is nil — 데이터 전달 실패(지도는 정상 초기화됨)")
         }
-        
-        // 지도 뒤, 시트 앞으로
-        view.bringSubviewToFront(bottomSheet)
     }
     
     // MARK: - 지도 기본 세팅
@@ -117,32 +108,35 @@ class RouteDetailViewController: UIViewController, CLLocationManagerDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    // MARK: - 바텀시트 드래그
-    private func setupPanGesture() {
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        bottomSheet.addGestureRecognizer(pan)
-    }
-    
-    @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
-        let t = gesture.translation(in: view)
-        switch gesture.state {
-            case .changed:
-                if t.y < 0 { bottomSheet.transform = CGAffineTransform(translationX: 0, y: t.y) }
-            case .ended:
-                UIView.animate(withDuration: 0.3) {
-                    self.bottomSheet.transform = t.y < -100
-                    ? CGAffineTransform(translationX: 0, y: -300)
-                    : .identity
-                }
-            default: break
+    private func presentBottomSheet() {
+        let sb = UIStoryboard(name: "Favorite", bundle: nil) // ✅ 수정: "Main" → "Favorite"
+        guard let sheetVC = sb.instantiateViewController(
+            withIdentifier: "BottomSheetVC"
+        ) as? BottomSheetViewController else {
+            assertionFailure("❌ BottomSheetVC를 Favorite.storyboard에서 찾지 못했습니다.")
+            return
         }
+        
+        sheetVC.route = route
+        sheetVC.modalPresentationStyle = .pageSheet
+        
+        if #available(iOS 15.0, *) {
+            if let sheet = sheetVC.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.selectedDetentIdentifier = .medium
+                sheet.largestUndimmedDetentIdentifier = .medium
+                sheet.prefersGrabberVisible = true
+                sheet.preferredCornerRadius = 16
+            }
+        }
+        
+        present(sheetVC, animated: true)
     }
-    
-    // MARK: - 시트 그림자
-    private func setupSheetShadow() {
-        bottomSheet.layer.shadowColor = UIColor.black.cgColor
-        bottomSheet.layer.shadowOpacity = 0.15
-        bottomSheet.layer.shadowRadius = 6
-        bottomSheet.layer.shadowOffset = CGSize(width: 0, height: -2)
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentBottomSheet()
     }
+
 }
