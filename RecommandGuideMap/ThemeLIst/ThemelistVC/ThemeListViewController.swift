@@ -9,8 +9,15 @@ import UIKit
 
 final class ThemeListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    private var themes: [Theme] = []
     
-    var themes: [Theme] = []
+    // 7개 카테고리
+    private let categories: [(title: String, cat3: String)] = [
+        ("한식", "A05020100"),
+        ("일식", "A05020300"),
+        ("중식", "A05020400")
+        
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,44 +27,7 @@ final class ThemeListViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate   = self
         
-        loadThemes()
-    }
-    
-    private func loadThemes() {
-        themes = mockData()
-        collectionView.reloadData()
-    }
-    
-    // 더미 데이터 (에셋: "ksup", "lpBar")
-    private func mockData() -> [Theme] {
-        let place1 = Location(
-            id: "p1", name: "콜트레인", rating: 4.5,
-            distanceText: "7.5km · 서울 중구 충무로3가", address: "서울 중구 충무로3가",
-            description: "LP와 재즈가 흐르는 감성 바",
-            photo: UIImage(named: "ksup")!, lat: 37.561, lng: 126.986
-        )
-        let place2 = Location(
-            id: "p2", name: "페이지스", rating: 4.3,
-            distanceText: "3.2km · 서울 마포구", address: "서울 마포구",
-            description: "잔잔한 대화하기 좋은 곳",
-            photo: UIImage(named: "lpBar")!, lat: 37.549, lng: 126.914
-        )
-        
-        let theme1 = Theme(
-            id: "t1",
-            title: "음악에 취해 한잔하기 좋은 뮤직바",
-            coverURL: URL(string: "https://picsum.photos/seed/t1/1200/800")!,
-            viewCount: 718,
-            places: [place1, place2]
-        )
-        let theme2 = Theme(
-            id: "t2",
-            title: "여기가 한국이라고? 이국 감성 거리",
-            coverURL: URL(string: "https://picsum.photos/seed/t2/1200/800")!,
-            viewCount: 668,
-            places: [place2, place1]
-        )
-        return [theme1, theme2]
+        Task { await loadCategoryThemes() }
     }
     
     private func makeLayout() -> UICollectionViewCompositionalLayout {
@@ -77,24 +47,64 @@ final class ThemeListViewController: UIViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
+    private func coverURL(for firstImage: String?, fallbackSeed title: String) -> URL? {
+        if let s = firstImage, let u = URL(string: s), !s.isEmpty { return u }
+        return URL(string: "https://picsum.photos/seed/\(title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "cover")/1200/800")
+    }
+    
+    // MARK: - 데이터 로드 (SimpleTourAPI 사용)
+    private func loadCategoryThemes() async {
+        do {
+            var newThemes: [Theme] = []
+            
+            for (title, code) in categories {
+                // ✅ [Location]을 바로 받음 (DTO 접근 X)
+                let locations: [Location] = try await SimpleTourAPI.searchKeyword(title, rows: 10, page: 1)
+                
+                let cover = coverURL(for: locations.first?.photoURL?.absoluteString, fallbackSeed: title)
+                
+                newThemes.append(
+                    Theme(
+                        id: code,
+                        title: "\(title) 맛집 ",
+                        coverImage: nil,
+                        coverURL: cover,
+                        viewCount: locations.count,
+                        locations: locations
+                    )
+                )
+            }
+            
+            await MainActor.run {
+                self.themes = newThemes
+                self.collectionView.reloadData()
+            }
+        } catch {
+            await MainActor.run {
+                let msg = (error as NSError).localizedDescription
+                let alert = UIAlertController(title: "불러오기 실패", message: msg, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                self.present(alert, animated: true)
+            }
+            print("API error:", error)
+        }
+    }
+    
+    // segue로 상세로 넘어가는 경우 기존 로직 유지
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showDetailSegue",
               let dest = segue.destination as? ThemeDetailViewController else { return }
-        
         if let cell = sender as? UICollectionViewCell,
            let indexPath = collectionView.indexPath(for: cell) {
             dest.theme = themes[indexPath.item]
             dest.hidesBottomBarWhenPushed = true
             return
         }
-        
         if let indexPath = collectionView.indexPathsForSelectedItems?.first {
             dest.theme = themes[indexPath.item]
             dest.hidesBottomBarWhenPushed = true
         }
     }
-
-    
 }
 
 extension ThemeListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -105,6 +115,5 @@ extension ThemeListViewController: UICollectionViewDataSource, UICollectionViewD
         cell.configure(theme: themes[indexPath.item])
         return cell
     }
-    
 }
 
