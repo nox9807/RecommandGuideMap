@@ -1,5 +1,5 @@
 //
-//  Place.swift
+//  Places.swift
 //  RecommandGuideMap
 //
 //  Created by chaeyoonpark on 11/7/25.
@@ -8,7 +8,7 @@
 import Foundation
 
 struct Place: Codable, Hashable {
-    let id: String          // Naver Place ID
+    let id: String          // Naver Places ID
     let name: String
     let category: String?
     let address: String?
