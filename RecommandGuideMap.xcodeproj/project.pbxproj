@@ -154,14 +154,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R3FWJFPQA2;
+				DEVELOPMENT_TEAM = 7RH8F785XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecommandGuideMap/Info.plist;
-
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
-
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -191,14 +189,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R3FWJFPQA2;
+				DEVELOPMENT_TEAM = 7RH8F785XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecommandGuideMap/Info.plist;
-
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
-
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

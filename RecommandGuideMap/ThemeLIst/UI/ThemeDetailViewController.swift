@@ -11,7 +11,7 @@ final class ThemeDetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var theme: Theme!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,13 +34,13 @@ final class ThemeDetailViewController: UIViewController {
     private func configureNavigationBar(visible: Bool) {
         navigationController?.setNavigationBarHidden(!visible, animated: false)
         
-        let ap = UINavigationBarAppearance()
-        ap.configureWithTransparentBackground()
-        ap.backgroundColor = .clear
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .clear
         
-        navigationController?.navigationBar.standardAppearance   = ap
-        navigationController?.navigationBar.scrollEdgeAppearance = ap
-        navigationController?.navigationBar.compactAppearance    = ap
+        navigationController?.navigationBar.standardAppearance   = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance    = appearance
         navigationController?.navigationBar.tintColor            = .white
         navigationItem.backButtonDisplayMode = .minimal
     }
@@ -52,6 +52,7 @@ final class ThemeDetailViewController: UIViewController {
                 heightDimension: .fractionalHeight(1.0)
             )
         )
+        
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(1.0),
@@ -59,20 +60,22 @@ final class ThemeDetailViewController: UIViewController {
             ),
             subitems: [item]
         )
+        
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
         section.contentInsets = .zero
+        
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
 
 extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ cv: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return theme.locations.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        theme.locations.count
     }
     
-    func collectionView(_ cv: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = cv.dequeueReusableCell(
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: LocationCardCell.reuseID,
             for: indexPath
         ) as! LocationCardCell
@@ -85,13 +88,12 @@ extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionVie
 }
 
 private extension ThemeDetailViewController {
-
     func openOnMap(place: Location) {
-        let sb = UIStoryboard(name: "Map", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {
+        let storyboard = UIStoryboard(name: "Map", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {
             return
         }
-
-        navigationController?.pushViewController(vc, animated: true)
+        
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

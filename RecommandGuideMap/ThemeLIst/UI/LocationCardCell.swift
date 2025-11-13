@@ -30,8 +30,8 @@ final class LocationCardCell: UICollectionViewCell {
         metaLabel.text   = location.distanceText
         descLabel.text   = location.description
         
-        if let img = location.photoImage {
-            imageView.image = img
+        if let image = location.photoImage {
+            imageView.image = image
         } else {
             imageView.setImage(url: location.photoURL, placeholder: UIImage(named: "placeholder"))
         }

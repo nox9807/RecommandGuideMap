@@ -15,7 +15,6 @@ final class ThemeListViewController: UIViewController {
         ("한식", "A05020100"),
         ("일식", "A05020300"),
         ("중식", "A05020400")
-        
     ]
     
     override func viewDidLoad() {
@@ -30,25 +29,37 @@ final class ThemeListViewController: UIViewController {
     }
     
     private func makeLayout() -> UICollectionViewCompositionalLayout {
-        let item  = NSCollectionLayoutItem(
-            layoutSize: .init(widthDimension: .fractionalWidth(1.0),
-                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .fractionalHeight(1.0)
+            )
         )
+        
         let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: .init(widthDimension: .fractionalWidth(1.0),
-                              heightDimension: .absolute(240)),
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .absolute(240)
+            ),
             subitems: [item]
         )
         group.contentInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 8
+        
         return UICollectionViewCompositionalLayout(section: section)
     }
     
     private func coverURL(for firstImage: String?, fallbackSeed title: String) -> URL? {
-        if let s = firstImage, let u = URL(string: s), !s.isEmpty { return u }
-        return URL(string: "https://picsum.photos/seed/\(title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "cover")/1200/800")
+        if let string = firstImage,
+           let url = URL(string: string),
+           !string.isEmpty {
+            return url
+        }
+        
+        let seed = title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "cover"
+        return URL(string: "https://picsum.photos/seed/\(seed)/1200/800")
     }
     
     private func loadCategoryThemes() async {
@@ -57,7 +68,7 @@ final class ThemeListViewController: UIViewController {
             
             for (title, code) in categories {
                 
-                let locations: [Location] = try await SimpleTourAPI.searchKeyword(title, rows: 10, page: 1)
+                let locations: [Location] = try await TourAPIService.shared.searchKeyword(title, rows: 10, page: 1)
                 
                 let cover = coverURL(for: locations.first?.photoURL?.absoluteString, fallbackSeed: title)
                 
@@ -79,8 +90,8 @@ final class ThemeListViewController: UIViewController {
             }
         } catch {
             await MainActor.run {
-                let msg = (error as NSError).localizedDescription
-                let alert = UIAlertController(title: "불러오기 실패", message: msg, preferredStyle: .alert)
+                let message = (error as NSError).localizedDescription
+                let alert = UIAlertController(title: "불러오기 실패", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default))
                 self.present(alert, animated: true)
             }
@@ -90,27 +101,34 @@ final class ThemeListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showDetailSegue",
-              let dest = segue.destination as? ThemeDetailViewController else { return }
+              let destination = segue.destination as? ThemeDetailViewController else { return }
+        
         if let cell = sender as? UICollectionViewCell,
            let indexPath = collectionView.indexPath(for: cell) {
-            dest.theme = themes[indexPath.item]
-            dest.hidesBottomBarWhenPushed = true
+            destination.theme = themes[indexPath.item]
+            destination.hidesBottomBarWhenPushed = true
             return
         }
+        
         if let indexPath = collectionView.indexPathsForSelectedItems?.first {
-            dest.theme = themes[indexPath.item]
-            dest.hidesBottomBarWhenPushed = true
+            destination.theme = themes[indexPath.item]
+            destination.hidesBottomBarWhenPushed = true
         }
     }
 }
 
 extension ThemeListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ cv: UICollectionView, numberOfItemsInSection section: Int) -> Int { themes.count }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        themes.count
+    }
     
-    func collectionView(_ cv: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = cv.dequeueReusableCell(withReuseIdentifier: ThemeCardCell.reuseID, for: indexPath) as! ThemeCardCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ThemeCardCell.reuseID,
+            for: indexPath
+        ) as! ThemeCardCell
+        
         cell.configure(theme: themes[indexPath.item])
         return cell
     }
 }
-
