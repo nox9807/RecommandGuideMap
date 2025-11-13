@@ -67,19 +67,18 @@ final class ThemeListViewController: UIViewController {
             var newThemes: [Theme] = []
             
             do {
-                let michelinDTO: ThemeDTO = try Bundle.main.decode(
-                    ThemeDTO.self,
-                    file: "michelin"
-                )
-                let michelinTheme = michelinDTO.toTheme()
-                newThemes.append(michelinTheme)
+                // 1) 미쉐린 스타
+                let michelinDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "michelin")
+                newThemes.append(michelinDTO.toTheme())
                 
-                let bibDTO: ThemeDTO = try Bundle.main.decode(
-                    ThemeDTO.self,
-                    file: "michelinBib"
-                )
-                let bibTheme = bibDTO.toTheme()
-                newThemes.append(bibTheme)
+                // 2) 미쉐린 빕구르망
+                let bibDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "michelinBib")
+                newThemes.append(bibDTO.toTheme())
+                
+                // 3) 블루리본 서베이 🔵 NEW
+                let blueDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "blueRibbon")
+                newThemes.append(blueDTO.toTheme())
+
                 
             } catch {
                 print("⚠️ Local JSON decode error:", error)

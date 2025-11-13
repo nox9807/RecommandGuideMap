@@ -1,0 +1,77 @@
+{
+  "id": "theme-blueRibbon",
+  "title": "대한민국이 공인하는 맛집 리스트, 블루리본",
+  "coverImageName": "blueRibbon",
+  "locations": [
+    {
+      "id": "blue-001",
+      "name": "삼원가든",
+      "rating": 5,
+      "address": "서울특별시 강남구 언주로 835",
+      "description": "50여 년 전통의 우리나라 대표 갈빗집.",
+      "lat": 37.541183,
+      "lng": 126.996162,
+      "imageName": "samwon"
+    },
+    {
+      "id": "blue-002",
+      "name": "쵸이닷",
+      "rating": 5,
+      "address": "서울특별시 강남구 도산대로 457",
+      "description": "최현석 셰프의 크리에이티브한 요리를 즐길 수 있는 레스토랑.",
+      "lat": 37.541183,
+      "lng": 126.996162,
+      "imageName": "choi"
+    },
+    {
+      "id": "blue-003",
+      "name": "몽중헌",
+      "rating": 5,
+      "address": "서울특별시 송파구 백제고분로 509",
+      "description": "정통 광둥식 딤섬으로 인기 많은 중식 레스토랑.",
+      "lat": 37.541183,
+      "lng": 126.996162,
+      "imageName": "mong"
+    },
+    {
+      "id": "blue-004",
+      "name": "세스크 멘슬",
+      "rating": 5,
+      "address": "서울특별시 성동구 성수이로14길 7",
+      "description": "스페인과 이탈리아에서 요리 경력을 쌓은 김정현 셰프가 운영하는 샤퀴테리 전문점.",
+      "lat": 37.541183,
+      "lng": 126.996162,
+      "imageName": "cesk"
+    },
+    {
+      "id": "blue-005",
+      "name": "효뜨",
+      "rating": 5,
+      "address": "서울특별시 용산구 한강대로38길 35",
+      "description": "한국에서 베트남 현지의 맛을 느낄 수 있는 곳.",
+      "lat": 37.541183,
+      "lng": 126.996162,
+      "imageName": "hwe"
+    },
+    {
+      "id": "blue-006",
+      "name": "하네",
+      "rating": 5,
+      "address": "서울특별시 강남구 언주로172길 14",
+      "description": "스시초희 출신 최주용 셰프의 하이엔드 스시야로 스시 오마카세gk.",
+      "lat": 37.541183,
+      "lng": 126.996162,
+      "imageName": "hane"
+    },
+    {
+      "id": "blue-007",
+      "name": "로스옥",
+      "rating": 5,
+      "address": "서울특별시 용산구 한남대로21길 14",
+      "description": "등심, 새우살, 등심 등 다양한 부위를 구워 먹을수 있는 한우 로스 구이 전문점.",
+      "lat": 37.541183,
+      "lng": 126.996162,
+      "imageName": "ross"
+    }
+  ]
+}
