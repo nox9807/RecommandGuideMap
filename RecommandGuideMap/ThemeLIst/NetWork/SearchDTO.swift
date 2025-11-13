@@ -54,7 +54,6 @@ struct SearchDTO: Decodable {
         }
     }
     
-    /// 실제 장소 하나에 해당하는 DTO
     struct Place: Decodable {
         let contentid: String?
         let title: String?

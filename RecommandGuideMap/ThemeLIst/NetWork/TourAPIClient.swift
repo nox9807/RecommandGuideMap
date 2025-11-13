@@ -18,11 +18,6 @@ final class TourAPIClient {
     private let baseURLString = "https://apis.data.go.kr/B551011/KorService2"
     private let urlSession: URLSession = .shared
     
-    /// 공통 GET 요청 메서드
-    /// - Parameters:
-    ///   - endpoint: "searchKeyword2" 처럼 path
-    ///   - queryParameters: serviceKey를 제외한 나머지 쿼리 파라미터
-    /// - Returns: JSON을 디코딩한 DTO (T)
     func fetch<T: Decodable>(
         endpoint: String,
         queryParameters: [String: String]

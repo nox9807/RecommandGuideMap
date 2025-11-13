@@ -66,9 +66,7 @@ final class ThemeListViewController: UIViewController {
         do {
             var newThemes: [Theme] = []
             
-            // 1️⃣ 로컬 JSON 기반 테마들을 먼저 추가 (항상 리스트 최상단에 오게)
             do {
-                // 1) 미쉐린 스타 레스토랑
                 let michelinDTO: ThemeDTO = try Bundle.main.decode(
                     ThemeDTO.self,
                     file: "michelin"
@@ -76,10 +74,9 @@ final class ThemeListViewController: UIViewController {
                 let michelinTheme = michelinDTO.toTheme()
                 newThemes.append(michelinTheme)
                 
-                // 2) 미쉐린 빕구르망 추가 🔥🔥
                 let bibDTO: ThemeDTO = try Bundle.main.decode(
                     ThemeDTO.self,
-                    file: "michelinBib"     // michelinBib.json
+                    file: "michelinBib"
                 )
                 let bibTheme = bibDTO.toTheme()
                 newThemes.append(bibTheme)
@@ -88,7 +85,6 @@ final class ThemeListViewController: UIViewController {
                 print("⚠️ Local JSON decode error:", error)
             }
             
-            // 2️⃣ TourAPI 기반 테마들을 아래쪽에 추가
             for (title, code) in categories {
                 let locations: [Location] = try await TourAPIService.shared.searchKeyword(
                     title,
@@ -113,7 +109,6 @@ final class ThemeListViewController: UIViewController {
                 )
             }
             
-            // 3️⃣ 최종 UI 반영
             await MainActor.run {
                 self.themes = newThemes
                 self.collectionView.reloadData()
