@@ -78,6 +78,10 @@ final class ThemeListViewController: UIViewController {
                 // 3) 블루리본 서베이 🔵 NEW
                 let blueDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "blueRibbon")
                 newThemes.append(blueDTO.toTheme())
+                
+                // 4) 용산 데이트 코스 🔥 NEW
+                let yongsanDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "yongsanCourse")
+                newThemes.append(yongsanDTO.toTheme())
 
                 
             } catch {
