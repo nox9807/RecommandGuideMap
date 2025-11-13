@@ -66,11 +66,40 @@ final class ThemeListViewController: UIViewController {
         do {
             var newThemes: [Theme] = []
             
+            // 1️⃣ 로컬 JSON 기반 테마들을 먼저 추가 (항상 리스트 최상단에 오게)
+            do {
+                // 1) 미쉐린 스타 레스토랑
+                let michelinDTO: ThemeDTO = try Bundle.main.decode(
+                    ThemeDTO.self,
+                    file: "michelin"
+                )
+                let michelinTheme = michelinDTO.toTheme()
+                newThemes.append(michelinTheme)
+                
+                // 2) 미쉐린 빕구르망 추가 🔥🔥
+                let bibDTO: ThemeDTO = try Bundle.main.decode(
+                    ThemeDTO.self,
+                    file: "michelinBib"     // michelinBib.json
+                )
+                let bibTheme = bibDTO.toTheme()
+                newThemes.append(bibTheme)
+                
+            } catch {
+                print("⚠️ Local JSON decode error:", error)
+            }
+            
+            // 2️⃣ TourAPI 기반 테마들을 아래쪽에 추가
             for (title, code) in categories {
+                let locations: [Location] = try await TourAPIService.shared.searchKeyword(
+                    title,
+                    rows: 10,
+                    page: 1
+                )
                 
-                let locations: [Location] = try await TourAPIService.shared.searchKeyword(title, rows: 10, page: 1)
-                
-                let cover = coverURL(for: locations.first?.photoURL?.absoluteString, fallbackSeed: title)
+                let cover = coverURL(
+                    for: locations.first?.photoURL?.absoluteString,
+                    fallbackSeed: title
+                )
                 
                 newThemes.append(
                     Theme(
@@ -84,6 +113,7 @@ final class ThemeListViewController: UIViewController {
                 )
             }
             
+            // 3️⃣ 최종 UI 반영
             await MainActor.run {
                 self.themes = newThemes
                 self.collectionView.reloadData()
@@ -91,13 +121,20 @@ final class ThemeListViewController: UIViewController {
         } catch {
             await MainActor.run {
                 let message = (error as NSError).localizedDescription
-                let alert = UIAlertController(title: "불러오기 실패", message: message, preferredStyle: .alert)
+                let alert = UIAlertController(
+                    title: "불러오기 실패",
+                    message: message,
+                    preferredStyle: .alert
+                )
                 alert.addAction(UIAlertAction(title: "확인", style: .default))
                 self.present(alert, animated: true)
             }
             print("API error:", error)
         }
     }
+
+
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showDetailSegue",
