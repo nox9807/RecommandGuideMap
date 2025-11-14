@@ -51,15 +51,14 @@ final class ThemeListViewController: UIViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    private func coverURL(for firstImage: String?, fallbackSeed title: String) -> URL? {
-        if let string = firstImage,
-           let url = URL(string: string),
-           !string.isEmpty {
-            return url
+    // ✅ 수정: String 반환
+    private func coverURL(for firstImage: String?, fallbackSeed title: String) -> String {
+        if let string = firstImage, !string.isEmpty {
+            return string
         }
         
         let seed = title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "cover"
-        return URL(string: "https://picsum.photos/seed/\(seed)/1200/800")
+        return "https://picsum.photos/seed/\(seed)/1200/800"
     }
     
     private func loadCategoryThemes() async {
@@ -75,19 +74,19 @@ final class ThemeListViewController: UIViewController {
                 let bibDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "michelinBib")
                 newThemes.append(bibDTO.toTheme())
                 
-                // 3) 블루리본 서베이 🔵 NEW
+                // 3) 블루리본 서베이
                 let blueDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "blueRibbon")
                 newThemes.append(blueDTO.toTheme())
                 
-                // 4) 용산 데이트 코스 🔥 NEW
+                // 4) 용산 데이트 코스
                 let yongsanDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "yongsanCourse")
                 newThemes.append(yongsanDTO.toTheme())
-
                 
             } catch {
                 print("⚠️ Local JSON decode error:", error)
             }
             
+            // API 테마 추가
             for (title, code) in categories {
                 let locations: [Location] = try await TourAPIService.shared.searchKeyword(
                     title,
@@ -95,18 +94,18 @@ final class ThemeListViewController: UIViewController {
                     page: 1
                 )
                 
+                // ✅ 수정: imageURL 사용
                 let cover = coverURL(
-                    for: locations.first?.photoURL?.absoluteString,
+                    for: locations.first?.imageURL,
                     fallbackSeed: title
                 )
                 
+                // ✅ 수정: coverImage, viewCount 제거
                 newThemes.append(
                     Theme(
                         id: code,
                         title: "\(title) 맛집 ",
-                        coverImage: nil,
                         coverURL: cover,
-                        viewCount: locations.count,
                         locations: locations
                     )
                 )
@@ -130,9 +129,6 @@ final class ThemeListViewController: UIViewController {
             print("API error:", error)
         }
     }
-
-
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showDetailSegue",

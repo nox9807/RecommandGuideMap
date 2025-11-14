@@ -19,18 +19,17 @@ struct LocalPlaceDTO: Decodable {
     let description: String
     let lat: Double
     let lng: Double
-    let imageName: String
+    let imageURL: String  // ✅ 변경
 }
 
 struct ThemeDTO: Decodable {
     let id: String
     let title: String
-    let coverImageName: String?
+    let coverURL: String?  // ✅ 변경
     let locations: [LocalPlaceDTO]
 }
 
 extension LocalPlaceDTO {
-    /// LocalPlaceDTO → 앱에서 실제로 사용하는 Location
     func toLocation() -> Location {
         Location(
             id: id,
@@ -39,8 +38,7 @@ extension LocalPlaceDTO {
             distanceText: address,
             address: address,
             description: description,
-            photoImage: UIImage(named: imageName),
-            photoURL: nil,
+            imageURL: imageURL,  // ✅ 변경
             lat: lat,
             lng: lng
         )
@@ -48,17 +46,13 @@ extension LocalPlaceDTO {
 }
 
 extension ThemeDTO {
-   
     func toTheme() -> Theme {
         let locations = self.locations.map { $0.toLocation() }
-        let coverImage = coverImageName.flatMap { UIImage(named: $0) }
         
         return Theme(
             id: id,
             title: title,
-            coverImage: coverImage,
-            coverURL: nil,
-            viewCount: locations.count,
+            coverURL: coverURL ?? "",  // ✅ 변경
             locations: locations
         )
     }

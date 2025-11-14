@@ -1,77 +1,77 @@
 {
-  "id": "theme-michelin",
-  "title": "미식의 경지에 다른 레스토랑! 미쉐린 스타!",
-  "coverImageName": "michelinSeoul",
-  "locations": [
-    {
-      "id": "michelin-001",
-      "name": "모수 서울",
-      "rating": 3,
-      "address": "서울특별시 용산구 회나무로41길 4",
-      "description": "흑백요리사로 유명한 안성재 쉐프의 레스토랑. 25년 재오픈",
-      "lat": 37.541183,
-      "lng": 126.996162,
-      "imageName": "mosuSeoul"
-    },
-    {
-      "id": "michelin-002",
-      "name": "정식당",
-      "rating": 2,
-      "address": "서울특별시 강남구 선릉로 158길 11",
-      "description": "한국의 사계절을 한상에 담은 모던 한식",
-      "lat": 37.52567,
-      "lng": 127.0411,
-      "imageName": "jung"
-    },
-    {
-      "id": "michelin-003",
-      "name": "밍글스",
-      "rating": 3,
-      "address": "서울특별시 강남구 도산대로 67길 19",
-      "description": "따뜻한 여백의 미가 돋보이는 현재 우리나라 유일의 3스타 레스토랑.",
-      "lat": 37.525332,
-      "lng": 127.044151,
-      "imageName": "mingles"
-    },
-    {
-      "id": "michelin-004",
-      "name": "라망 시크레",
-      "rating": 1,
-      "address": "서울특별시 중구 퇴계로 67",
-      "description": "냉장고를 부탁해 유명 쉐프 손종원의 아름다운 예술.",
-      "lat": 37.559828,
-      "lng": 126.979543,
-      "imageName": "laMang"
-    },
-    {
-      "id": "michelin-005",
-      "name": "에스 콘디도",
-      "rating": 1,
-      "address": "서울특별시 용산구 한남대로 20길 61-7",
-      "description": "진우범 쉐프의 멕시칸 퀴진에 대한 열정을 느낄 수 있는 1스타 레스토랑.",
-      "lat": 37.535148,
-      "lng": 127.010513,
-      "imageName": "escon"
-    },
-    {
-      "id": "michelin-006",
-      "name": "권숙수",
-      "rating": 2,
-      "address": "서울특별시 강남구 압구정로 80길 37",
-      "description": "일절 타협하지 않는 ‘숙수’의 고집이 고스란히 녹아 있는 한식의 깊은 맛",
-      "lat": 37.524417,
-      "lng": 127.043584,
-      "imageName": "kwon"
-    },
-    {
-      "id": "michelin-007",
-      "name": "에빗",
-      "rating": 2,
-      "address": "서울특별시 강남구 도산대로 45길 10-5",
-      "description": "일절 타협하지 않는 ‘숙수’의 고집이 고스란히 녹아 있는 한식의 깊은 맛",
-      "lat": 37.52336,
-      "lng": 127.036219,
-      "imageName": "ebit"
-    }
-  ]
+    "id": "theme-michelin",
+    "title": "미식의 경지에 다른 레스토랑! 미쉐린 스타 레스토랑",
+    "coverURL": "https://i.ibb.co/FbnZ1tBn/michelin-Seoul.jpg",
+    "locations": [
+        {
+            "id": "michelin-001",
+            "name": "모수 서울",
+            "rating": 3,
+            "address": "서울특별시 용산구 회나무로41길 4",
+            "description": "흑백요리사로 유명한 안성재 쉐프의 레스토랑. 25년 재오픈",
+            "lat": 37.541183,
+            "lng": 126.996162,
+            "imageURL": "https://i.ibb.co/KpZ6S9w3/mosu-Seoul.jpg"
+        },
+        {
+            "id": "michelin-002",
+            "name": "정식당",
+            "rating": 2,
+            "address": "서울특별시 강남구 선릉로 158길 11",
+            "description": "한국의 사계절을 한상에 담은 모던 한식",
+            "lat": 37.52567,
+            "lng": 127.0411,
+            "imageURL": "https://i.ibb.co/hJbfzdk5/jung.jpg"
+        },
+        {
+            "id": "michelin-003",
+            "name": "밍글스",
+            "rating": 3,
+            "address": "서울특별시 강남구 도산대로 67길 19",
+            "description": "따뜻한 여백의 미가 돋보이는 현재 우리나라 유일의 3스타 레스토랑.",
+            "lat": 37.525332,
+            "lng": 127.044151,
+            "imageURL": "https://i.ibb.co/tP3Xqt8Q/mingles.jpg"
+        },
+        {
+            "id": "michelin-004",
+            "name": "라망 시크레",
+            "rating": 1,
+            "address": "서울특별시 중구 퇴계로 67",
+            "description": "냉장고를 부탁해 유명 쉐프 손종원의 아름다운 예술.",
+            "lat": 37.559828,
+            "lng": 126.979543,
+            "imageURL": "https://i.ibb.co/rRyJsX7N/laMang.jpg"
+        },
+        {
+            "id": "michelin-005",
+            "name": "에스 콘디도",
+            "rating": 1,
+            "address": "서울특별시 용산구 한남대로 20길 61-7",
+            "description": "진우범 쉐프의 멕시칸 퀴진에 대한 열정을 느낄 수 있는 1스타 레스토랑.",
+            "lat": 37.535148,
+            "lng": 127.010513,
+            "imageURL": "https://i.ibb.co/6c8sHvQh/escon.jpg"
+        },
+        {
+            "id": "michelin-006",
+            "name": "권숙수",
+            "rating": 2,
+            "address": "서울특별시 강남구 압구정로 80길 37",
+            "description": "일절 타협하지 않는 '숙수'의 고집이 고스란히 녹아 있는 한식의 깊은 맛",
+            "lat": 37.524417,
+            "lng": 127.043584,
+            "imageURL": "https://i.ibb.co/N6PbPNrT/kwon.jpg"
+        },
+        {
+            "id": "michelin-007",
+            "name": "에빗",
+            "rating": 2,
+            "address": "서울특별시 강남구 도산대로 45길 10-5",
+            "description": "일절 타협하지 않는 '숙수'의 고집이 고스란히 녹아 있는 한식의 깊은 맛",
+            "lat": 37.52336,
+            "lng": 127.036219,
+            "imageURL": "https://i.ibb.co/9mzMD82x/ebit.jpg"
+        }
+    ]
 }

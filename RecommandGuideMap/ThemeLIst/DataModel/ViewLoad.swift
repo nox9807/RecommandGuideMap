@@ -11,23 +11,25 @@ final class ImageLoader {
     static let shared = ImageLoader()
     private let cache = NSCache<NSURL, UIImage>()
     
-    func load(_ url: URL?, into imageView: UIImageView, placeholder: UIImage? = nil) {
-        guard let url else {
-            imageView.image = placeholder
-            return
-        }
+    func load(_ urlString: String, into imageView: UIImageView, placeholder: UIImage? = nil) {
+        imageView.image = placeholder
+        
+        guard let url = URL(string: urlString) else { return }
         
         if let cached = cache.object(forKey: url as NSURL) {
             imageView.image = cached
             return
         }
         
-        imageView.image = placeholder
-        
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
-            guard let self,
-                  let data,
-                  let image = UIImage(data: data) else { return }
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  let image = UIImage(data: data) else {
+                if let error = error {
+                    print("⚠️ 이미지 로드 실패: \(error.localizedDescription)")
+                }
+                return
+            }
             
             self.cache.setObject(image, forKey: url as NSURL)
             
@@ -37,9 +39,8 @@ final class ImageLoader {
         }.resume()
     }
 }
-
 extension UIImageView {
-    func setImage(url: URL?, placeholder: UIImage? = nil) {
+    func setImage(url: String, placeholder: UIImage? = nil) {
         ImageLoader.shared.load(url, into: self, placeholder: placeholder)
     }
 }

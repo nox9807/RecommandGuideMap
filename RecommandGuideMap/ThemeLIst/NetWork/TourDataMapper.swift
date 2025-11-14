@@ -8,9 +8,7 @@
 import Foundation
 
 struct TourDataMapper {
-
     static func locations(from dto: SearchDTO) throws -> [Location] {
-
         guard dto.response.header.resultCode == "0000" else {
             let message = dto.response.header.resultMsg
             throw NSError(
@@ -19,17 +17,15 @@ struct TourDataMapper {
                 userInfo: [NSLocalizedDescriptionKey: "[API] \(message)"]
             )
         }
-
+        
         let places: [SearchDTO.Place] = {
             switch dto.response.body.items {
-            case .list(let array):
-                return array
-            case .empty:
-                return []
+                case .list(let array): return array
+                case .empty: return []
             }
         }()
-
-        let locations: [Location] = places.compactMap { place in
+        
+        return places.compactMap { place in
             guard
                 let longitudeString = place.mapx,
                 let latitudeString  = place.mapy,
@@ -40,21 +36,18 @@ struct TourDataMapper {
             else {
                 return nil
             }
-
+            
             return Location(
                 id: place.contentid ?? UUID().uuidString,
                 name: place.title ?? "(이름없음)",
-                rating: Double.random(in: 3.8...5.0),              // 실제 평점이 없으므로 임시 값
-                distanceText: place.addr1 ?? "-",                  // metaLabel에 사용
-                address: place.addr1 ?? (place.addr2 ?? "-"),      // 상세 주소
-                description: place.title ?? "",                    // 간단 설명
-                photoImage: nil,
-                photoURL: URL(string: imageURLString),
+                rating: Double.random(in: 3.8...5.0),
+                distanceText: place.addr1 ?? "-",
+                address: place.addr1 ?? (place.addr2 ?? "-"),
+                description: place.title ?? "",
+                imageURL: imageURLString,  // ✅ 변경
                 lat: latitude,
                 lng: longitude
             )
         }
-
-        return locations
     }
 }

@@ -1,67 +1,67 @@
 {
-  "id": "theme-yongsan",
-  "title": "요즘 뜨는 느좋 용산 맛집",
-  "coverImageName": "yongsan",
-  "locations": [
-    {
-      "id": "yongsan-001",
-      "name": "시옥",
-      "rating": 5,
-      "address": "서울특별시 용산구 한강대로62길 16",
-      "description": "독특한 풍미가 인상적인 싱가폴식 맛집ㅃ.",
-      "lat": 37.56815,
-      "lng": 126.99815,
-      "imageName": "siok"
-    },
-    {
-      "id": "yongsan-002",
-      "name": "중화식",
-      "rating": 5,
-      "address": "서울특별시 용산구 한강대로 62나길 7-4",
-      "description": "로컬 바이브에서 즐기는 대만식 섹시푸드.",
-      "lat": 37.56815,
-      "lng": 126.99815,
-      "imageName": "chong"
-    },
-    {
-      "id": "yongsan-003",
-      "name": "꺼거",
-      "rating": 5,
-      "address": "서울특별시 용산구 한강로2가 100-3",
-      "description": "현지 감성 물씬나는 곳에서 홍콩 요리를",
-      "lat": 37.56815,
-      "lng": 126.99815,
-      "imageName": "kkour"
-    },
-    {
-      "id": "yongsan-004",
-      "name": "근본양만",
-      "rating": 5,
-      "address": "서울특별시 용산구 한강로2가 44-2",
-      "description": "혼자가기 좋은 용산의 숨은 장어 한상 맛집",
-      "lat": 37.56815,
-      "lng": 126.99815,
-      "imageName": "fendemantal"
-    },
-    {
-      "id": "yongsan-005",
-      "name": "오일제",
-      "rating": 5,
-      "address": "서울특별시 용산구 한강대로 62다길 29",
-      "description": "들깨 미역국이 이렇게 섹시할 수 있나요?",
-      "lat": 37.56815,
-      "lng": 126.99815,
-      "imageName": "5day"
-    },
-    {
-      "id": "yongsan-006",
-      "name": "말방국밥",
-      "rating": 5,
-      "address": "서울특별시 용산구 한강대로52길 42",
-      "description": "따뜻한 추억을 떠올리게 하는 진정한 섹시푸드",
-      "lat": 37.56815,
-      "lng": 126.99815,
-      "imageName": "horse"
-    }
-  ]
+    "id": "theme-yongsan",
+    "title": "요즘 뜨는 느좋 용산 맛집",
+    "coverURL": "https://i.ibb.co/FpxcTpV/yongsan.jpg",
+    "locations": [
+        {
+            "id": "yongsan-001",
+            "name": "시옥",
+            "rating": 5,
+            "address": "서울특별시 용산구 한강대로62길 16",
+            "description": "독특한 풍미가 인상적인 싱가폴식 맛집ㅃ.",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/bj3TgvxZ/siok.jpg"
+        },
+        {
+            "id": "yongsan-002",
+            "name": "중화식",
+            "rating": 5,
+            "address": "서울특별시 용산구 한강대로 62나길 7-4",
+            "description": "로컬 바이브에서 즐기는 대만식 섹시푸드.",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/8nqqW1gg/chong.jpg"
+        },
+        {
+            "id": "yongsan-003",
+            "name": "꺼거",
+            "rating": 5,
+            "address": "서울특별시 용산구 한강로2가 100-3",
+            "description": "현지 감성 물씬나는 곳에서 홍콩 요리를",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/mCzvpWvB/kkour.jpg"
+        },
+        {
+            "id": "yongsan-004",
+            "name": "근본양만",
+            "rating": 5,
+            "address": "서울특별시 용산구 한강로2가 44-2",
+            "description": "혼자가기 좋은 용산의 숨은 장어 한상 맛집",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/vCny9Qdt/fendemantal.jpg"
+        },
+        {
+            "id": "yongsan-005",
+            "name": "오일제",
+            "rating": 5,
+            "address": "서울특별시 용산구 한강대로 62다길 29",
+            "description": "들깨 미역국이 이렇게 섹시할 수 있나요?",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/ZQ74pmX/5day.jpg"
+        },
+        {
+            "id": "yongsan-006",
+            "name": "말방국밥",
+            "rating": 5,
+            "address": "서울특별시 용산구 한강대로52길 42",
+            "description": "따뜻한 추억을 떠올리게 하는 진정한 섹시푸드",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/GvvyG25m/horse.jpg"
+        }
+    ]
 }
