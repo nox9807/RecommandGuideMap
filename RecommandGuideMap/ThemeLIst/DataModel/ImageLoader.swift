@@ -1,5 +1,5 @@
 //
-//  ViewLoad.swift
+//  ImageLoader.swift
 //  RecommandGuideMap
 //
 //  Created by 이찬희 on 11/10/25.

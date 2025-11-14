@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 final class TourAPIClient {
     
     static let shared = TourAPIClient()
@@ -18,15 +17,23 @@ final class TourAPIClient {
     private let baseURLString = "https://apis.data.go.kr/B551011/KorService2"
     private let urlSession: URLSession = .shared
     
+    private var serviceKey: String {
+        guard let key = Bundle.main.object(forInfoDictionaryKey: "TOUR_SERVICE_KEY") as? String else {
+            print("⚠️ TOUR_SERVICE_KEY not found in Info.plist")
+            return ""
+        }
+        return key
+    }
+    
     func fetch<T: Decodable>(
         endpoint: String,
         queryParameters: [String: String]
     ) async throws -> T {
-    
-        var components = URLComponents(string: "\(baseURLString)/\(endpoint)")!
         
+        var components = URLComponents(string: "\(baseURLString)/\(endpoint)")!
+    
         var queryItems: [URLQueryItem] = [
-            URLQueryItem(name: "serviceKey", value: "536ee065f39affbbdae629132adf070de5704a369f4ea5a02e9a9f80d1f10a53")
+            URLQueryItem(name: "serviceKey", value: serviceKey)
         ]
         
         for (key, value) in queryParameters {
