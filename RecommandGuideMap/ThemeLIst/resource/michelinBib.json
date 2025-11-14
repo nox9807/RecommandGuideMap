@@ -1,0 +1,77 @@
+{
+    "id": "theme-michelin-bib",
+    "title": "합리적인 가격대에 미쉐린이? 미쉐린 빕구르망",
+    "coverURL": "https://i.ibb.co/Q77KXwL7/michelin.jpg",
+    "locations": [
+        {
+            "id": "michelinBib-001",
+            "name": "우레옥",
+            "rating": 5,
+            "address": "서울특별시 중구 창경궁로 62-29",
+            "description": "80년 전통의 대한민국 대표 평양냉면집.",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/q3q2d9f8/woo.jpg"
+        },
+        {
+            "id": "michelinBib-002",
+            "name": "명동 교자",
+            "rating": 5,
+            "address": "서울특별시 중구 명동 10길 29",
+            "description": "우리나라 교자의 1번지 명동에 60년 전통 오리저널 맛집.",
+            "lat": 37.562547,
+            "lng": 126.98561,
+            "imageURL": "https://i.ibb.co/ZR2mRrnq/meung.jpg"
+        },
+        {
+            "id": "michelinBib-003",
+            "name": "안암",
+            "rating": 5,
+            "address": "서울특별시 종로구 북촌로 5길 10",
+            "description": "익숙한 한식의맛, 새로운 음식의 경험.",
+            "lat": 37.57938,
+            "lng": 126.984458,
+            "imageURL": "https://i.ibb.co/Kp9Bp0cH/an.jpg"
+        },
+        {
+            "id": "michelinBib-004",
+            "name": "꿉당",
+            "rating": 5,
+            "address": "서울특별시 서초구 강남대로 615",
+            "description": "부드러운 육즙과 지방의 황금 밸런스! 돼지 목살 전문점 '꿉당'.",
+            "lat": 37.516621,
+            "lng": 127.019062,
+            "imageURL": "https://i.ibb.co/PGtZ2mSH/kkup.jpg"
+        },
+        {
+            "id": "michelinBib-005",
+            "name": "사루카메",
+            "rating": 5,
+            "address": "서울특별시 마포구 연남로 15",
+            "description": "2대째 혼마 히로토 오너 셰프가 운영하는 장인정신과 세계적인 맛을 경험할 수 있다",
+            "lat": 37.56105,
+            "lng": 126.922626,
+            "imageURL": "https://i.ibb.co/Kx5nfN92/saloo.jpg"
+        },
+        {
+            "id": "michelinBib-006",
+            "name": "황생가 칼국수",
+            "rating": 5,
+            "address": "서울특별시 종로구 북촌로 5길 78",
+            "description": "입구에 들어서면 보이는 만두를 빚는 것처럼, 정성과 손맛이 일품인 황생가 칼국수",
+            "lat": 37.580079,
+            "lng": 126.980675,
+            "imageURL": "https://i.ibb.co/1Yp283r5/hwang.jpg"
+        },
+        {
+            "id": "michelinBib-007",
+            "name": "게방 식당",
+            "rating": 5,
+            "address": "서울특별시 강남구 선릉로 131길 17",
+            "description": "화려한 카페같은 분위기에 명품 게장을 파는 이색 맛집",
+            "lat": 37.517353,
+            "lng": 127.039424,
+            "imageURL": "https://i.ibb.co/vCVZhcDC/gebang.jpg"
+        }
+    ]
+}
