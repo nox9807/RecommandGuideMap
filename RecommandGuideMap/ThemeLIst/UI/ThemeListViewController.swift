@@ -11,11 +11,24 @@ final class ThemeListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var themes: [Theme] = []
     
-    private let categories: [(title: String, cat3: String)] = [
-        ("한식", "A05020100"),
-        ("일식", "A05020300"),
-        ("중식", "A05020400")
-    ]
+    enum FoodCategory: String, CaseIterable {
+        case korean = "A05020100"
+        case japanese = "A05020300"
+        case chinese = "A05020400"
+        
+        var title: String {
+            switch self {
+                case .korean: return "한식"
+                case .japanese: return "일식"
+                case .chinese: return "중식"
+            }
+        }
+    }
+    
+    // Provide (title, code) pairs derived from FoodCategory
+    private var categories: [(title: String, code: String)] {
+        FoodCategory.allCases.map { ($0.title, $0.rawValue) }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
