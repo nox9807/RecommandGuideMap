@@ -115,6 +115,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="도착"/>
+                                <connections>
+                                    <action selector="arriveButton:" destination="fMe-g7-jrz" eventType="touchUpInside" id="k7z-34-fCQ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHt-R3-3g5">
                                 <rect key="frame" x="16" y="160" width="361" height="21"/>
@@ -225,7 +228,7 @@
                                     <imageReference key="image" image="arrow.turn.up.right" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="k7M-Pv-XNc" kind="presentation" identifier="" modalPresentationStyle="fullScreen" id="ad5-Ya-npt"/>
+                                    <segue destination="k7M-Pv-XNc" kind="presentation" identifier="ShowDirections" modalPresentationStyle="fullScreen" id="ad5-Ya-npt"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" placeholder="검색어를 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="YBR-tG-WW2">
@@ -239,6 +242,19 @@
                                     <outlet property="delegate" destination="Dlw-62-shY" id="m1M-ff-FID"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="025-zw-A1j">
+                                <rect key="frame" x="353" y="238" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kqT-4b-rRF"/>
+                                    <constraint firstAttribute="width" constant="30" id="ny3-XV-oDO"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled"/>
+                                <connections>
+                                    <action selector="vtn:" destination="Dlw-62-shY" eventType="touchUpInside" id="eDH-A6-uf1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pZb-2K-bC2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -248,7 +264,9 @@
                             <constraint firstItem="Iqr-Qn-Mzr" firstAttribute="leading" secondItem="pZb-2K-bC2" secondAttribute="leading" id="PZz-Qc-FUq"/>
                             <constraint firstItem="pZb-2K-bC2" firstAttribute="trailing" secondItem="U17-aB-ouc" secondAttribute="trailing" constant="16" id="Vv7-Wa-uIL"/>
                             <constraint firstItem="YBR-tG-WW2" firstAttribute="top" secondItem="pZb-2K-bC2" secondAttribute="top" id="XEf-2F-KZG"/>
+                            <constraint firstItem="pZb-2K-bC2" firstAttribute="trailing" secondItem="025-zw-A1j" secondAttribute="trailing" constant="10" id="cgq-rv-Pxh"/>
                             <constraint firstItem="Iqr-Qn-Mzr" firstAttribute="trailing" secondItem="pZb-2K-bC2" secondAttribute="trailing" id="dEy-D5-ph0"/>
+                            <constraint firstItem="025-zw-A1j" firstAttribute="top" secondItem="Iqr-Qn-Mzr" secondAttribute="bottom" constant="8" symbolic="YES" id="eQT-Eq-Ama"/>
                             <constraint firstItem="Iqr-Qn-Mzr" firstAttribute="top" secondItem="pZb-2K-bC2" secondAttribute="top" constant="72" id="gfO-g9-oP7"/>
                             <constraint firstItem="YBR-tG-WW2" firstAttribute="leading" secondItem="pZb-2K-bC2" secondAttribute="leading" constant="16" id="n80-zy-Fy4"/>
                         </constraints>
@@ -271,7 +289,7 @@
         <!--Directions View Controller-->
         <scene sceneID="8gV-m2-Ozu">
             <objects>
-                <viewController id="k7M-Pv-XNc" customClass="DirectionsViewController" customModule="RecommandGuideMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DirectionsViewController" id="k7M-Pv-XNc" customClass="DirectionsViewController" customModule="RecommandGuideMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bLk-Eb-xkb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,6 +333,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="k7M-Pv-XNc" id="RUE-Zb-dyg"/>
+                                    <outlet property="delegate" destination="k7M-Pv-XNc" id="7WH-lz-nzl"/>
+                                </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="출발지 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8i-RN-3HI">
                                 <rect key="frame" x="78.333333333333343" y="59" width="260.33333333333326" height="34"/>
@@ -345,6 +367,7 @@
                     <connections>
                         <outlet property="arriveTextField" destination="Msp-sV-Ivz" id="fPb-uZ-Hli"/>
                         <outlet property="startTextField" destination="m8i-RN-3HI" id="sNe-0q-d4G"/>
+                        <outlet property="tableView" destination="nj9-iP-Qcq" id="vOv-Ad-jpc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mw7-bT-6Qx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -371,6 +394,9 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

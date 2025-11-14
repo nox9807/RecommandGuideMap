@@ -157,11 +157,9 @@
 				DEVELOPMENT_TEAM = R3FWJFPQA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecommandGuideMap/Info.plist;
-
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
-
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -194,11 +192,9 @@
 				DEVELOPMENT_TEAM = R3FWJFPQA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecommandGuideMap/Info.plist;
-
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 표시하기 위해 위치 접근이 필요합니다.";
-
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
