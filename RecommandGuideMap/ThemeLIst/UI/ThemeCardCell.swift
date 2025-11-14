@@ -26,10 +26,7 @@ final class ThemeCardCell: UICollectionViewCell {
     
     func configure(theme: Theme) {
         titleLabel.text = theme.title
-        if let img = theme.coverImage {
-            coverImageView.image = img
-        } else {
-            coverImageView.setImage(url: theme.coverURL, placeholder: UIImage(named: "placeholder"))
-        }
+        // ✅ 변경: URL로만 로드
+        coverImageView.setImage(url: theme.coverURL, placeholder: UIImage(named: "placeholder"))
     }
 }
