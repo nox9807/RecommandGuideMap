@@ -2,94 +2,35 @@ import UIKit
 import NMapsMap
 import CoreLocation
 
-class RouteDetailViewController: UIViewController, CLLocationManagerDelegate {
-    
-    // MARK: - 지도 관련
-    private var naverMapView: NMFNaverMapView!
-    private var mapView: NMFMapView { naverMapView.mapView }
-    private let locationManager = CLLocationManager()
+final class RouteDetailViewController: BaseMapViewController {
     
     // MARK: - 데이터
-    var route: RouteSummary?   // <- 옵셔널로
+    var route: RouteSummary?
+    
+    // 이미 시트를 띄웠는지 여부
+    private var didPresentSheet = false
     
     // MARK: - 생명주기
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //  지도/현재위치는 항상 세팅
-        setupMap()
-        setupLocation()
         setupCloseButton()
         
-        //  route가 있으면 경로만 그리기
         if let route = route {
-            setupRouteMap(with: route)
+            drawRoute(route)   // BaseMapViewController 메서드 재사용
+            print("RouteDetailViewController.route.title =", route.title)
         } else {
-            print("⚠️ route is nil — 데이터 전달 실패(지도는 정상 초기화됨)")
+            print("route 데이터가 없습니다.")
         }
     }
     
-    // MARK: - 지도 기본 세팅
-    private func setupMap() {
-        naverMapView = NMFNaverMapView(frame: view.bounds)
-        naverMapView.showLocationButton = true
-        naverMapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.insertSubview(naverMapView, at: 0)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        mapView.positionMode = .normal
-        mapView.locationOverlay.hidden = false
-    }
-    
-    // MARK: - 현재 위치(권한 요청은 첫 화면에서 이미 수행)
-    private func setupLocation() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 5
-        locationManager.startUpdatingLocation()
-    }
-    
-    // MARK: - 위치 업데이트
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let coord = locations.last?.coordinate else { return }
-        let target = NMGLatLng(lat: coord.latitude, lng: coord.longitude)
-        
-        mapView.locationOverlay.location = target
-        
-        let cameraUpdate = NMFCameraUpdate(scrollTo: target)
-        cameraUpdate.animation = .easeIn
-        mapView.moveCamera(cameraUpdate)
-    }
-    
-    // MARK: - 루트 표시
-    private func setupRouteMap(with route: RouteSummary) {
-        let coords = [route.origin] + route.waypoints + [route.destination]
-        let nmgCoords = coords.map { NMGLatLng(lat: $0.lat, lng: $0.lng) }
-        
-        //  폴리라인 생성 (SDK 제네릭 대응 버전)
-        let path = NMGLineString(points: nmgCoords) as! NMGLineString<AnyObject>
-        let polyline = NMFPolylineOverlay(path)
-        polyline?.color = UIColor.systemBlue
-        polyline?.mapView = mapView
-        
-        //  마커 추가
-        addMarker(for: route.origin, color: .red)
-        route.waypoints.forEach { addMarker(for: $0, color: .blue) }
-        addMarker(for: route.destination, color: .purple)
-        
-        //  카메라 이동
-        let bounds = NMGLatLngBounds(latLngs: nmgCoords)
-        let update = NMFCameraUpdate(fit: bounds, padding: 80)
-        mapView.moveCamera(update)
-    }
-
-
-    
-    private func addMarker(for place: RoutePlace, color: UIColor) {
-        let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: place.lat, lng: place.lng)
-        marker.captionText = place.name
-        marker.iconTintColor = color
-        marker.mapView = mapView
+        // 여러 번 호출되는 거 방지
+        if didPresentSheet == false {
+            didPresentSheet = true
+            presentBottomSheet()
+        }
     }
     
     // MARK: - 닫기 버튼
@@ -98,45 +39,61 @@ class RouteDetailViewController: UIViewController, CLLocationManagerDelegate {
         closeButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
         closeButton.tintColor = .white
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
-        closeButton.frame = CGRect(x: 330, y: 60, width: 100, height: 100)
+        closeButton.frame = CGRect(x: view.bounds.width - 70, y: 60, width: 40, height: 40)
         closeButton.layer.shadowOpacity = 0.2
         closeButton.layer.shadowRadius = 2
         view.addSubview(closeButton)
     }
     
     @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
+        // 혹시 네비게이션 push 방식이면 아래로 바꿔야 함
+        // navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - 바텀시트 표시
     private func presentBottomSheet() {
-        let sb = UIStoryboard(name: "Favorite", bundle: nil) // ✅ 수정: "Main" → "Favorite"
-        guard let sheetVC = sb.instantiateViewController(
-            withIdentifier: "BottomSheetVC"
+        let storyboard = UIStoryboard(name: "Favorite", bundle: nil)
+        guard let sheetVC = storyboard.instantiateViewController(
+            withIdentifier: "BottomSheetViewController"
         ) as? BottomSheetViewController else {
-            assertionFailure("❌ BottomSheetVC를 Favorite.storyboard에서 찾지 못했습니다.")
+            print("BottomSheetViewController를 Favorite.storyboard에서 찾지 못했습니다.")
             return
         }
         
-        sheetVC.route = route
+        sheetVC.route = route           // 선택한 루트 데이터 전달
         sheetVC.modalPresentationStyle = .pageSheet
         
-        if #available(iOS 15.0, *) {
-            if let sheet = sheetVC.sheetPresentationController {
-                sheet.detents = [.medium(), .large()]
-                sheet.selectedDetentIdentifier = .medium
-                sheet.largestUndimmedDetentIdentifier = .medium
-                sheet.prefersGrabberVisible = true
-                sheet.preferredCornerRadius = 16
+        if let sheet = sheetVC.sheetPresentationController {
+            sheetVC.isModalInPresentation = true      // 아래로 당겨도 dismiss 안 되게
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30
+            
+            // ① 아래로 내렸을 때: 제목 + 별 버튼만 보이는 높이
+            let headerDetent = UISheetPresentationController.Detent.custom(
+                identifier: .init("header")
+            ) { _ in
+                return 80   // 필요하면 110~140 사이로 조절
             }
+            
+            // ② 처음 올라올 때: 콘텐츠 전체(출발/경유/도착) 보이는 높이
+            let contentDetent = UISheetPresentationController.Detent.custom(
+                identifier: .init("content")
+            ) { _ in
+                // 방금 BottomSheetViewController에서 계산해 둔 높이 사용
+                return sheetVC.preferredContentSize.height
+            }
+            
+            // 두 단계 설정
+            sheet.detents = [headerDetent, contentDetent]
+            
+            // ▶ 처음에는 “내용 전체” 높이로 띄우기
+            sheet.selectedDetentIdentifier = contentDetent.identifier
+            
+            // dim(배경 어두워지는 범위)은 그냥 전체로 두고 싶으면 nil 또는 contentDetent
+            sheet.largestUndimmedDetentIdentifier = contentDetent.identifier
         }
         
         present(sheetVC, animated: true)
     }
-
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        presentBottomSheet()
-    }
-
 }

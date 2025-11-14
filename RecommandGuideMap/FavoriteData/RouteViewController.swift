@@ -8,22 +8,7 @@ class RouteViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var routes: [RouteSummary] = [
-        RouteSummary(
-            title: "강원도 해안 루트",
-            origin: RoutePlace(name: "강원도 심곡리", lat: 37.68, lng: 129.04),
-            waypoints: [],
-            destination: RoutePlace(name: "정동진 호텔", lat: 37.689, lng: 129.034),
-            categoryCounts: ["관광명소":3, "식당":2, "숙박":1]
-        ),
-        RouteSummary(
-            title: "서울 중심 투어",
-            origin: RoutePlace(name: "홍대입구", lat: 37.556, lng: 126.923),
-            waypoints: [],
-            destination: RoutePlace(name: "남산 타워", lat: 37.551, lng: 126.988),
-            categoryCounts: ["관광명소":2, "식당":1, "숙박":0]
-        )
-    ]
+    private var routes: [RouteSummary] = RouteDummyData.samples
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +41,9 @@ extension RouteViewController: UITableViewDataSource, UITableViewDelegate {
                 as? RouteDetailViewController else { return }
         
         vc.route = routes[indexPath.row]
+        
+        print("선택한 route.title =", routes[indexPath.row].title)
+
         navigationController?.pushViewController(vc, animated: true)
     }
 
