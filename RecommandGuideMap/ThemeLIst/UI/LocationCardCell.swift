@@ -30,7 +30,6 @@ final class LocationCardCell: UICollectionViewCell {
         metaLabel.text   = location.distanceText
         descLabel.text   = location.description
         
-        // ✅ 변경: URL로만 로드
         imageView.setImage(url: location.imageURL, placeholder: UIImage(named: "placeholder"))
     }
 }

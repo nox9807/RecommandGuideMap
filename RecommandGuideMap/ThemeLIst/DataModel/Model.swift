@@ -13,7 +13,7 @@ public struct Location: Codable {
     public let distanceText: String
     public let address: String
     public let description: String
-    public let imageURL: String  // ✅ 변경
+    public let imageURL: String
     public let lat: Double
     public let lng: Double
 }
@@ -21,7 +21,7 @@ public struct Location: Codable {
 public struct Theme: Codable {
     public let id: String
     public let title: String
-    public let coverURL: String  // ✅ 변경
+    public let coverURL: String 
     public let locations: [Location]
     
     public var viewCount: Int { locations.count }

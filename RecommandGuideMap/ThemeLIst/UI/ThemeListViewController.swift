@@ -11,24 +11,11 @@ final class ThemeListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var themes: [Theme] = []
     
-    enum FoodCategory: String, CaseIterable {
-        case korean = "A05020100"
-        case japanese = "A05020300"
-        case chinese = "A05020400"
-        
-        var title: String {
-            switch self {
-                case .korean: return "한식"
-                case .japanese: return "일식"
-                case .chinese: return "중식"
-            }
-        }
-    }
-    
-    // Provide (title, code) pairs derived from FoodCategory
-    private var categories: [(title: String, code: String)] {
-        FoodCategory.allCases.map { ($0.title, $0.rawValue) }
-    }
+    private let categories: [(title: String, code: String)] = [
+        ("한식", "A05020100"),
+        ("일식", "A05020300"),
+        ("중식", "A05020400")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +23,9 @@ final class ThemeListViewController: UIViewController {
         
         collectionView.collectionViewLayout = makeLayout()
         collectionView.dataSource = self
-        collectionView.delegate   = self
+        collectionView.delegate = self
         
-        Task { await loadCategoryThemes() }
+        Task { await loadThemes() }
     }
     
     private func makeLayout() -> UICollectionViewCompositionalLayout {
@@ -64,83 +51,59 @@ final class ThemeListViewController: UIViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    // ✅ 수정: String 반환
-    private func coverURL(for firstImage: String?, fallbackSeed title: String) -> String {
-        if let string = firstImage, !string.isEmpty {
-            return string
-        }
-        
-        let seed = title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "cover"
-        return "https://picsum.photos/seed/\(seed)/1200/800"
-    }
-    
-    private func loadCategoryThemes() async {
+    private func loadThemes() async {
         do {
-            var newThemes: [Theme] = []
+            var allThemes: [Theme] = []
             
-            do {
-                // 1) 미쉐린 스타
-                let michelinDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "michelin")
-                newThemes.append(michelinDTO.toTheme())
-                
-                // 2) 미쉐린 빕구르망
-                let bibDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "michelinBib")
-                newThemes.append(bibDTO.toTheme())
-                
-                // 3) 블루리본 서베이
-                let blueDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "blueRibbon")
-                newThemes.append(blueDTO.toTheme())
-                
-                // 4) 용산 데이트 코스
-                let yongsanDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: "yongsanCourse")
-                newThemes.append(yongsanDTO.toTheme())
-                
-            } catch {
-                print("⚠️ Local JSON decode error:", error)
+            let localFiles = ["michelin", "michelinBib", "blueRibbon", "yongsanCourse"]
+            for fileName in localFiles {
+                do {
+                    let themeDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: fileName)
+                    allThemes.append(themeDTO.toTheme())
+                } catch {
+                    print("⚠️ \(fileName) 로드 실패: \(error)")
+                }
             }
             
-            // API 테마 추가
             for (title, code) in categories {
-                let locations: [Location] = try await TourAPIService.shared.searchKeyword(
-                    title,
-                    rows: 10,
-                    page: 1
-                )
-                
-                // ✅ 수정: imageURL 사용
-                let cover = coverURL(
-                    for: locations.first?.imageURL,
-                    fallbackSeed: title
-                )
-                
-                // ✅ 수정: coverImage, viewCount 제거
-                newThemes.append(
-                    Theme(
+                do {
+        
+                    let locations = try await TourAPI.shared.search(keyword: title, rows: 10)
+                    
+                    let coverURL = locations.first?.imageURL ?? "https://picsum.photos/1200/800"
+                    
+                    allThemes.append(Theme(
                         id: code,
-                        title: "\(title) 맛집 ",
-                        coverURL: cover,
+                        title: "\(title) 맛집",
+                        coverURL: coverURL,
                         locations: locations
-                    )
-                )
+                    ))
+                } catch {
+                    print("⚠️ \(title) API 로드 실패: \(error)")
+                }
             }
             
+            // UI 업데이트
             await MainActor.run {
-                self.themes = newThemes
+                self.themes = allThemes
                 self.collectionView.reloadData()
             }
+            
         } catch {
             await MainActor.run {
-                let message = (error as NSError).localizedDescription
-                let alert = UIAlertController(
-                    title: "불러오기 실패",
-                    message: message,
-                    preferredStyle: .alert
-                )
-                alert.addAction(UIAlertAction(title: "확인", style: .default))
-                self.present(alert, animated: true)
+                showError(message: error.localizedDescription)
             }
-            print("API error:", error)
         }
+    }
+    
+    private func showError(message: String) {
+        let alert = UIAlertController(
+            title: "불러오기 실패",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
