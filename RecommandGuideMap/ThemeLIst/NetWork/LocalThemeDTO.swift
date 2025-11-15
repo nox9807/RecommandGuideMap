@@ -4,9 +4,6 @@
 //
 //  Created by 이찬희 on 11/13/25.
 //
-//  LocalPlaceDTO.swift
-//  RecommandGuideMap
-//
 
 import Foundation
 import UIKit
@@ -19,13 +16,13 @@ struct LocalPlaceDTO: Decodable {
     let description: String
     let lat: Double
     let lng: Double
-    let imageURL: String  // ✅ 변경
+    let imageURL: String 
 }
 
 struct ThemeDTO: Decodable {
     let id: String
     let title: String
-    let coverURL: String?  // ✅ 변경
+    let coverURL: String?
     let locations: [LocalPlaceDTO]
 }
 
@@ -38,7 +35,7 @@ extension LocalPlaceDTO {
             distanceText: address,
             address: address,
             description: description,
-            imageURL: imageURL,  // ✅ 변경
+            imageURL: imageURL,
             lat: lat,
             lng: lng
         )
@@ -52,7 +49,7 @@ extension ThemeDTO {
         return Theme(
             id: id,
             title: title,
-            coverURL: coverURL ?? "",  // ✅ 변경
+            coverURL: coverURL ?? "",
             locations: locations
         )
     }
