@@ -55,7 +55,7 @@ final class ThemeListViewController: UIViewController {
         do {
             var allThemes: [Theme] = []
             
-            let localFiles = ["michelin", "michelinBib", "blueRibbon", "yongsanCourse"]
+            let localFiles = ["michelin", "michelinBib", "blueRibbon", "yongsanCourse", "hotelSeoul", "tourSpot"]
             for fileName in localFiles {
                 do {
                     let themeDTO: ThemeDTO = try Bundle.main.decode(ThemeDTO.self, file: fileName)
