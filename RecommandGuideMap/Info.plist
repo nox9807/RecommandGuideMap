@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TOUR_SERVICE_KEY</key>
-	<string>$(TOUR_SERVICE_KEY)</string>
 	<key>NAVER_CLIENT_ID</key>
 	<string>$(NAVER_CLIENT_ID)</string>
 	<key>NAVER_CLIENT_SECRET</key>
@@ -30,6 +28,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>TOUR_SERVICE_KEY</key>
+	<string>$(TOUR_SERVICE_KEY)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
