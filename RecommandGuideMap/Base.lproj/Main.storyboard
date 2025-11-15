@@ -50,7 +50,7 @@
         <scene sceneID="kdi-7g-tAx">
             <objects>
                 <viewControllerPlaceholder storyboardName="Favorite" id="wip-vK-b8A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="kXu-in-wPR"/>
+                    <tabBarItem key="tabBarItem" title="즐겨찾기" image="star.fill" catalog="system" id="kXu-in-wPR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YG-Ys-MlE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,5 +60,6 @@
     <resources>
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>
 </document>

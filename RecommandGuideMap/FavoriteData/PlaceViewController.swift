@@ -12,19 +12,23 @@ class PlaceViewController: UIViewController {
         
     @IBOutlet weak var tableView: UITableView!
     
-    // 임시 데이터 (나중에 Core Data 연결되면 실제 데이터로 바뀜)
-    let places: [(name: String, address: String, category: String)] = [
-        ("카페 노티드", "서울 강남구 테헤란로 123", "카페 · 0.5km"),
-        ("을지로 식당", "서울 중구 을지로 45", "한식 · 2.1km"),
-        ("올리브영 강남점", "서울 강남구 강남대로 101", "쇼핑 · 0.8km")
-    ]
+    /// 즐겨찾기 목록을 이 화면에서 사용하기 위한 배열
+    private var places: [FavoritePlace] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.dataSource = self
-        tableView.delegate = self
+        tableView.delegate   = self
+    }
+    
+    /// 즐겨찾기 탭으로 들어올 때마다 최신 데이터로 갱신
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        
+        // FavoriteStore에 쌓여 있는 즐겨찾기 목록 가져오기
+        places = FavoriteStore.shared.places
+        tableView.reloadData()
     }
 }
 
