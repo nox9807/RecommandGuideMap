@@ -129,6 +129,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDA-5j-qWx">
+                                <rect key="frame" x="342" y="222" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="fMe-g7-jrz" eventType="touchUpInside" id="2U1-fq-DWB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zcO-R1-0zl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -380,6 +390,7 @@
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="99"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="map" catalog="system" width="128" height="112"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
