@@ -38,15 +38,10 @@ class SearchViewController: UIViewController {
             await search(query: query)
         }
     }
-    
+    // 여기부분 여러번 호출되니까 고려해볼 것 끝글자에 맞춰서 앞글자는 캔슬되게 아니면 타이핑중인 상태를 받아 타이핑을 하지않는 시간을(0.5 ~ 1) 정해 타이핑중에는 검색이되지않고 타이핑이 끝나면 search가 한번 불리게
     func search(query: String) async {
         do {
-            
-            let id = Bundle.main.object(forInfoDictionaryKey: "NAVER_CLIENT_ID") as? String ?? ""
-            let secret = Bundle.main.object(forInfoDictionaryKey: "NAVER_CLIENT_SECRET") as? String ?? ""
-            
-            let cureentText = searchTextField.text ?? ""
-            let result = try await NaverLocalSearch().search(query: cureentText, clientId: id, clientSecret: secret)
+            let result = try await SearchModel().search(keyword: searchTextField.text ?? "")
             
             DispatchQueue.main.async {
                 self.items = result

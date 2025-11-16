@@ -1,6 +1,6 @@
 {
     "id": "theme-yongsan",
-    "title": "요즘 뜨는 느좋 용산 맛집",
+    "title": "요즘 핫한 느좋 용리단길 맛집",
     "coverURL": "https://i.ibb.co/FpxcTpV/yongsan.jpg",
     "locations": [
         {
@@ -8,7 +8,7 @@
             "name": "시옥",
             "rating": 5,
             "address": "서울특별시 용산구 한강대로62길 16",
-            "description": "독특한 풍미가 인상적인 싱가폴식 맛집ㅃ.",
+            "description": "독특한 풍미가 인상적인 싱가폴식 맛집.",
             "lat": 37.56815,
             "lng": 126.99815,
             "imageURL": "https://i.ibb.co/bj3TgvxZ/siok.jpg"

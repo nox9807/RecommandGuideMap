@@ -1,0 +1,67 @@
+{
+    "id": "hotel-seoul",
+    "title": "최고의 품격과 서비스 서을 호텔",
+    "coverURL": "https://i.ibb.co/qMZNcvNF/silla.jpg",
+    "locations": [
+        {
+           "id": "hotel-001",
+            "name": "신라호텔",
+            "rating": 5,
+            "address": "서울특별시 중구 동호로 249",
+            "description": "현대식 호텔과 한옥의 영빈관을 함깨 경험 하는 서울 대표 호텔. 전통과 현대의 아름다운 조화와 품격을 누릴수 있는 곳!",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/qMZNcvNF/silla.jpg"
+        },
+        {
+            "id": "hotel-002",
+            "name": "포시즌스 서울",
+            "rating": 5,
+            "address": "서울특별시 종로구 당주동 새문안로 97",
+            "description": "2025 포브스가 선정한 한국 최고의 호텔. 최고의 서비스와 최고의 품격을 누려보는 건 자신을 위한 투자가 아닐까요?",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/cS2cbkyn/fourseason.jpg"
+        },
+        {
+            "id": "hotel-003",
+            "name": "페어몬트 엠버서더 서울",
+            "rating": 5,
+            "address": "서울특별시 영등포구 여의대로 108",
+            "description": "호텔에 더현대가? 토트넘 선수들도 목었다는 그 호텔. 모든것이 있어서 호텔에만 있고 싶은 그곳",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/qMhZ0G1S/fare.jpg"
+        },
+        {
+            "id": "hotel-004",
+            "name": "시그니엘 서울",
+            "rating": 5,
+            "address": "서울특별시 송파구 올림픽로 300",
+            "description": "한국 가장높은곳에 호텔이? 롯데월드 타워 83층에서 즐기는 호캉스! 비행기와 같은 높이를 경험할수 있는곳",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/0jvW3YQZ/lotte.jpg"
+        },
+        {
+            "id": "hotel-005",
+            "name": "반얀트리 서울",
+            "rating": 5,
+            "address": "서울특별시 중구 장충단로 60",
+            "description": "솔로지옥에 나왔던 그 핫한 호텔에서 호캉스는 어떠신가요? 객실에서 스파도 함께 즐길 수있는 최고의 숙소",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/fVBHhfL4/ban.jpg"
+        },
+        {
+            "id": "hotel-006",
+            "name": "그랜드 하얏트 서울",
+            "rating": 5,
+            "address": "서울특별시 용산구 소월로 322",
+            "description": "트럼프가 방한했을때 묵었다는 그 호텔! 이태원을 내려다보는 한강뷰가 최고인 호텔",
+            "lat": 37.56815,
+            "lng": 126.99815,
+            "imageURL": "https://i.ibb.co/WNqhHtWQ/hyatt.jpg"
+        }
+    ]
+}

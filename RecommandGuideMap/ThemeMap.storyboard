@@ -40,7 +40,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oj-Do-cUs">
                                                     <rect key="frame" x="40" y="29" width="312" height="116"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                                    <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -139,7 +139,7 @@
                                                         <constraint firstAttribute="height" constant="24" id="xoT-SH-U5D"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" systemColor="secondaryLabelColor"/>
                                                     <size key="shadowOffset" width="3" height="5"/>
                                                 </label>
@@ -149,7 +149,7 @@
                                                         <constraint firstAttribute="height" constant="20" id="nmo-NG-3PA"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울시 종로구 광화문로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xu-rE-Jr4">
@@ -158,24 +158,24 @@
                                                         <constraint firstAttribute="height" constant="20" id="H7o-j7-Vjr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cby-Ts-cqh">
-                                                    <rect key="frame" x="8" y="518.66666666666663" width="95.666666666666671" height="34.333333333333371"/>
+                                                    <rect key="frame" x="8" y="518.66666666666663" width="104.33333333333333" height="34.333333333333371"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bum-RA-2Cy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="48.333333333333336" height="34.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="51.333333333333336" height="34.333333333333336"/>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system">
-                                                                <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="map" catalog="system">
+                                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxX-dg-Ixa">
-                                                            <rect key="frame" x="49.333333333333329" y="0.0" width="46.333333333333329" height="34.333333333333336"/>
+                                                            <rect key="frame" x="52.333333333333343" y="0.0" width="52" height="34.333333333333336"/>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system">
-                                                                <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
+                                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
                                                         </button>
                                                     </subviews>
@@ -189,7 +189,7 @@
                                                         <constraint firstAttribute="height" constant="38.329999999999998" id="XHh-xq-rz6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -248,10 +248,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark" catalog="system" width="110" height="128"/>
-        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
+        <image name="map" catalog="system" width="128" height="112"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

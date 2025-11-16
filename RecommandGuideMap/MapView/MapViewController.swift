@@ -12,18 +12,25 @@ import NMapsMap
 class MapViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     let manager = CLLocationManager()
     var isFollowingUser: Bool = true
-    //var items: [SearchResponse.SearchItem] = []
     var selectedItem: SearchResponse.SearchItem?
     // 기존 mapView만으로 지도를 구현했는데 showLoactionButton이 NMFNaverMapView에서만 제공되는 API라 NMFNaverMapView를 루트로 쓰고 내부의 실제 지도는 mapView: NMFMapView로 읽기 전용 계산 프로퍼티로 기존코드를 그대로 사용
     private var naverMapView: NMFNaverMapView!
     private var mapView: NMFMapView { naverMapView.mapView }
     private var marker: NMFMarker?
     private var locationOverlay: NMFLocationOverlay!
+    
+    private var markers: [NMFMarker] = []
+    private var paths: [NMFPath] = []
+    
+    
+    @IBAction func vtn(_ sender: Any) {
+        clearMap()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +54,7 @@ class MapViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         //searchBar.delegate = self
     }
-    
+
     // MARK: -검색창을 띄워주고 검색했을 때 그 좌표에 focuse하고 모달표시
     func presentSearch() {
         let vc = storyboard?.instantiateViewController(identifier: "SearchViewController") as! SearchViewController
@@ -66,6 +73,63 @@ class MapViewController: UIViewController {
         present(vc, animated: true)
     }
     
+    func clearMap() {
+        // 모든 마커 제거
+        for marker in markers {
+            marker.mapView = nil
+        }
+        markers.removeAll()
+        
+        // 모든 경로 제거
+        for path in paths {
+            path.mapView = nil
+        }
+        paths.removeAll()
+    }
+    
+    // 출발지와 도착지를 입력하게되면 좌표를 받아서 카메라 업데이트 및 마커표시와 경로표시
+    func mapViewFocus(startMapx: String, startMapy: String, startTitle: String,
+                      arriveMapx: String, arriveMapy: String, arriveTitle: String) {
+        
+        clearMap()
+        
+        guard let startLatlng = addMarker(mapx: startMapx, mapy: startMapy, title: startTitle),
+              let arriveLatlng = addMarker(mapx: arriveMapx, mapy: arriveMapy, title: arriveTitle) else { return }
+
+        let bound = NMGLatLngBounds(southWest: NMGLatLng(lat: min(startLatlng.lat, arriveLatlng.lat), lng: min(startLatlng.lng, arriveLatlng.lng)), northEast: NMGLatLng(lat: max(startLatlng.lat, arriveLatlng.lat), lng: max(startLatlng.lng, arriveLatlng.lng)))
+        
+        let cameraUpdate = NMFCameraUpdate(fit: bound, padding: 100)
+        cameraUpdate.animation = .easeIn
+        mapView.moveCamera(cameraUpdate)
+        
+        drawPath(from: startLatlng, to: arriveLatlng)
+    }
+
+    func drawPath(from start:NMGLatLng, to arrive: NMGLatLng) {
+        let path = NMFPath()
+        path.path = NMGLineString(points: [start, arrive])
+        path.color = UIColor.systemBlue
+        path.width = 8
+        path.mapView = mapView
+        
+        paths.append(path)
+    }
+    
+    func addMarker(mapx: String, mapy: String, title: String) -> NMGLatLng? {
+        guard let x = tm128Double(from: mapx),
+              let y = tm128Double(from: mapy) else { return nil}
+        
+        let lagLng = NMGLatLng(lat: y, lng: x)
+        
+        let mapMarker = NMFMarker(position: lagLng)
+        mapMarker.captionText = stripHTML(title)
+        mapMarker.mapView = mapView
+        
+        markers.append(mapMarker)
+        
+        return lagLng
+    }
+    
     // MARK: - 좌표를 받아 카메라 업데이트 및 마커 표시, 마커 핸들러
     func focus(mapx: String, mapy: String, title: String) {
         guard let x = tm128Double(from: mapx),
@@ -80,10 +144,10 @@ class MapViewController: UIViewController {
         mapView.moveCamera(cameraUpdate)
         
         marker?.mapView = nil
-        let m = NMFMarker(position: latLng)
-        m.captionText = stripHTML(title)
+        let mapMarker = NMFMarker(position: latLng)
+        mapMarker.captionText = stripHTML(title)
         
-        m.touchHandler = { [weak self] overlay -> Bool in
+        mapMarker.touchHandler = { [weak self] overlay -> Bool in
             guard let self = self, let tapped = overlay as? NMFMarker else { return false }
             
             tapped.zIndex = 1000
@@ -92,26 +156,27 @@ class MapViewController: UIViewController {
             return true
         }
         
-        m.mapView = mapView
-        marker = m
+        mapMarker.mapView = mapView
+        marker = mapMarker
+        markers.append(mapMarker)
     }
     
-    // MARK: - 좌표값 문자열을 소수로 치환하는 메소드
-    func tm128Double(from raw: String, Digits: Int = 7) -> Double? {
-        let digits = raw.filter(\.isNumber)
-        guard !digits.isEmpty else { return nil }
-        
-        if digits.count <= Digits {
-            let frac = String(repeating: "0", count: Digits - digits.count) + digits
-            return Double("0.\(frac)")
-        } else {
-            let splitIdx = digits.index(digits.endIndex, offsetBy: -Digits)
-            let frontPart = String(digits[..<splitIdx])
-            let backPart = String(digits[splitIdx...])
-            
-            return Double("\(frontPart).\(backPart)")
-        }
-    }
+//    // MARK: - 좌표값 문자열을 소수로 치환하는 메소드
+//    func tm128Double(from raw: String, Digits: Int = 7) -> Double? {
+//        let digits = raw.filter(\.isNumber)
+//        guard !digits.isEmpty else { return nil }
+//        
+//        if digits.count <= Digits {
+//            let frac = String(repeating: "0", count: Digits - digits.count) + digits
+//            return Double("0.\(frac)")
+//        } else {
+//            let splitIdx = digits.index(digits.endIndex, offsetBy: -Digits)
+//            let frontPart = String(digits[..<splitIdx])
+//            let backPart = String(digits[splitIdx...])
+//            
+//            return Double("\(frontPart).\(backPart)")
+//        }
+//    }
     
     // MARK: - 알림 표시(위치 서비스를 비활성화 했을 때)
     func showAlert() {
@@ -136,30 +201,37 @@ class MapViewController: UIViewController {
     
     // MARK: - 반 모달시트 구현
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "ShowBottomSheet" else { return }
-        
-        let destVC = segue.destination
-        
-        destVC.modalPresentationStyle = .pageSheet
-        
-        if let sheet = destVC.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.selectedDetentIdentifier = .medium
-            sheet.largestUndimmedDetentIdentifier = .medium
-            sheet.prefersGrabberVisible = true
-            sheet.preferredCornerRadius = 16
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+        if segue.identifier == "ShowBottomSheet" {
+            
+            let destVC = segue.destination
+            destVC.modalPresentationStyle = .pageSheet
+            
+            if let sheet = destVC.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.selectedDetentIdentifier = .medium
+                sheet.largestUndimmedDetentIdentifier = .medium
+                sheet.prefersGrabberVisible = true
+                sheet.preferredCornerRadius = 16
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+            }
+            
+            if let infoVC = segue.destination as? InfoViewController {
+                infoVC.item = selectedItem
+                infoVC.mapView = self
+            }
         }
-            //destVC.isModalInPresentation = true
-        (destVC as? InfoViewController)?.item = selectedItem
+        else if segue.identifier == "ShowDirections" {
+            if let destVC = segue.destination as? DirectionsViewController {
+                destVC.mapView = self
+            }
+        }
     }
 }
 
-// MARK: - CLLocationManagerDelegate 구현
+ // MARK: - CLLocationManagerDelegate 구현
 extension MapViewController: CLLocationManagerDelegate {
     // MARK: 상태 변경시 작동하는 코드
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print(#function, manager.authorizationStatus.rawValue)
         switch manager.authorizationStatus {
             case .notDetermined:
                 manager.requestWhenInUseAuthorization()
@@ -181,10 +253,10 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let last = locations.last else { return }
         let coord = last.coordinate
         let target = NMGLatLng(lat: coord.latitude, lng: coord.longitude)
-        print("메소드")
+        
         DispatchQueue.main.async {
             self.locationOverlay.location = target
-            print(self.locationOverlay.location)
+            
             guard self.isFollowingUser else { return }
             
             let cameraUpdate = NMFCameraUpdate(scrollTo: target)
