@@ -129,6 +129,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDA-5j-qWx">
+                                <rect key="frame" x="342" y="222" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="sbk-6f-9Sc"/>
+                                    <constraint firstAttribute="height" constant="35" id="yay-f6-WOH"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="fMe-g7-jrz" eventType="touchUpInside" id="2U1-fq-DWB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zcO-R1-0zl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -136,7 +149,9 @@
                             <constraint firstItem="zcO-R1-0zl" firstAttribute="trailing" secondItem="LHt-R3-3g5" secondAttribute="trailing" constant="16" id="3qg-wk-pBu"/>
                             <constraint firstItem="zcO-R1-0zl" firstAttribute="trailing" secondItem="GRS-4m-RwG" secondAttribute="trailing" constant="16" id="6qX-s4-XMp"/>
                             <constraint firstItem="GRS-4m-RwG" firstAttribute="leading" secondItem="zcO-R1-0zl" secondAttribute="leading" constant="16" id="DV5-1A-dG6"/>
+                            <constraint firstItem="VDA-5j-qWx" firstAttribute="top" secondItem="LHt-R3-3g5" secondAttribute="bottom" constant="41" id="L9C-jj-3En"/>
                             <constraint firstItem="LHt-R3-3g5" firstAttribute="leading" secondItem="zcO-R1-0zl" secondAttribute="leading" constant="16" id="aTM-xe-geQ"/>
+                            <constraint firstItem="zcO-R1-0zl" firstAttribute="trailing" secondItem="VDA-5j-qWx" secondAttribute="trailing" constant="16" id="ghG-Rj-Q40"/>
                             <constraint firstItem="7JF-6M-xK4" firstAttribute="top" secondItem="LHt-R3-3g5" secondAttribute="bottom" constant="41" id="kjX-Df-nsv"/>
                             <constraint firstItem="Wnm-5a-JEJ" firstAttribute="top" secondItem="LHt-R3-3g5" secondAttribute="bottom" constant="41" id="nfg-if-Q7D"/>
                             <constraint firstItem="GRS-4m-RwG" firstAttribute="top" secondItem="zcO-R1-0zl" secondAttribute="top" constant="32" id="oNX-as-MzC"/>
@@ -380,6 +395,7 @@
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="99"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="map" catalog="system" width="128" height="112"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
