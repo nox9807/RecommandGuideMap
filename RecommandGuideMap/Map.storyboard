@@ -172,66 +172,11 @@
         <!--지도-->
         <scene sceneID="0Nr-pu-bZO">
             <objects>
-                <viewController id="Dlw-62-shY" customClass="MapViewController" customModule="RecommandGuideMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="Dlw-62-shY" customClass="MapViewController" customModule="RecommandGuideMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u77-lj-h0t">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqr-Qn-Mzr" customClass="TouchScrollView" customModule="RecommandGuideMap" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="190" width="393" height="40"/>
-                                <subviews>
-                                    <stackView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4ZR-uo-ETR">
-                                        <rect key="frame" x="0.0" y="0.0" width="447" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxk-V1-6ac">
-                                                <rect key="frame" x="0.0" y="3" width="83" height="34.333333333333336"/>
-                                                <color key="backgroundColor" systemColor="lightTextColor"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="지역"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glQ-Lb-g0X">
-                                                <rect key="frame" x="91" y="3" width="83" height="34.333333333333336"/>
-                                                <color key="backgroundColor" systemColor="lightTextColor"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="주변맛집"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyu-PM-p80">
-                                                <rect key="frame" x="182" y="3" width="83" height="34.333333333333336"/>
-                                                <color key="backgroundColor" systemColor="lightTextColor"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="관광명소"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9z-pr-cyW">
-                                                <rect key="frame" x="273" y="3" width="83" height="34.333333333333336"/>
-                                                <color key="backgroundColor" systemColor="lightTextColor"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="숙소"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83E-j7-iZD">
-                                                <rect key="frame" x="364" y="3" width="83" height="34.333333333333336"/>
-                                                <color key="backgroundColor" systemColor="lightTextColor"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="카페"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="4ZR-uo-ETR" secondAttribute="trailing" id="1cY-Wm-16K"/>
-                                    <constraint firstItem="4ZR-uo-ETR" firstAttribute="height" secondItem="Iqr-Qn-Mzr" secondAttribute="height" id="CFU-ZV-uVg"/>
-                                    <constraint firstAttribute="height" constant="40" id="EXg-l5-cx6"/>
-                                    <constraint firstAttribute="bottom" secondItem="4ZR-uo-ETR" secondAttribute="bottom" id="Tz9-6v-nT8"/>
-                                    <constraint firstItem="4ZR-uo-ETR" firstAttribute="top" secondItem="Iqr-Qn-Mzr" secondAttribute="top" id="gTw-l9-i6c"/>
-                                    <constraint firstItem="4ZR-uo-ETR" firstAttribute="leading" secondItem="Iqr-Qn-Mzr" secondAttribute="leading" id="olV-9D-Mjl"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="JJG-v3-k03"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="DKP-3P-QZi"/>
-                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U17-aB-ouc">
                                 <rect key="frame" x="327.33333333333331" y="126" width="49.666666666666686" height="48"/>
                                 <constraints>
@@ -258,32 +203,44 @@
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="025-zw-A1j">
-                                <rect key="frame" x="353" y="238" width="30" height="30"/>
+                                <rect key="frame" x="347" y="198" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="kqT-4b-rRF"/>
-                                    <constraint firstAttribute="width" constant="30" id="ny3-XV-oDO"/>
+                                    <constraint firstAttribute="width" constant="30" id="J25-rE-OVK"/>
+                                    <constraint firstAttribute="height" constant="30" id="vQM-AN-Nb8"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled"/>
+                                <buttonConfiguration key="configuration" style="filled" image="eraser.line.dashed" catalog="system"/>
                                 <connections>
                                     <action selector="vtn:" destination="Dlw-62-shY" eventType="touchUpInside" id="eDH-A6-uf1"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="680-5a-gXH">
+                                <rect key="frame" x="347" y="236" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mEW-Nc-MGy"/>
+                                    <constraint firstAttribute="width" constant="30" id="zvR-Xb-hIT"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="xmarkButton:" destination="Dlw-62-shY" eventType="touchUpInside" id="EhJ-xM-XNu"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pZb-2K-bC2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pZb-2K-bC2" firstAttribute="trailing" secondItem="025-zw-A1j" secondAttribute="trailing" constant="16" id="1ma-8f-uAe"/>
                             <constraint firstItem="U17-aB-ouc" firstAttribute="top" secondItem="pZb-2K-bC2" secondAttribute="top" constant="8" id="3Xu-Bg-8k8"/>
                             <constraint firstItem="U17-aB-ouc" firstAttribute="leading" secondItem="YBR-tG-WW2" secondAttribute="trailing" symbolic="YES" id="4tt-sI-WGr"/>
-                            <constraint firstItem="Iqr-Qn-Mzr" firstAttribute="leading" secondItem="pZb-2K-bC2" secondAttribute="leading" id="PZz-Qc-FUq"/>
+                            <constraint firstItem="pZb-2K-bC2" firstAttribute="trailing" secondItem="680-5a-gXH" secondAttribute="trailing" constant="16" id="7LF-PV-5cs"/>
+                            <constraint firstItem="680-5a-gXH" firstAttribute="top" secondItem="025-zw-A1j" secondAttribute="bottom" constant="8" symbolic="YES" id="QjR-A1-jTc"/>
                             <constraint firstItem="pZb-2K-bC2" firstAttribute="trailing" secondItem="U17-aB-ouc" secondAttribute="trailing" constant="16" id="Vv7-Wa-uIL"/>
                             <constraint firstItem="YBR-tG-WW2" firstAttribute="top" secondItem="pZb-2K-bC2" secondAttribute="top" id="XEf-2F-KZG"/>
-                            <constraint firstItem="pZb-2K-bC2" firstAttribute="trailing" secondItem="025-zw-A1j" secondAttribute="trailing" constant="10" id="cgq-rv-Pxh"/>
-                            <constraint firstItem="Iqr-Qn-Mzr" firstAttribute="trailing" secondItem="pZb-2K-bC2" secondAttribute="trailing" id="dEy-D5-ph0"/>
-                            <constraint firstItem="025-zw-A1j" firstAttribute="top" secondItem="Iqr-Qn-Mzr" secondAttribute="bottom" constant="8" symbolic="YES" id="eQT-Eq-Ama"/>
-                            <constraint firstItem="Iqr-Qn-Mzr" firstAttribute="top" secondItem="pZb-2K-bC2" secondAttribute="top" constant="72" id="gfO-g9-oP7"/>
                             <constraint firstItem="YBR-tG-WW2" firstAttribute="leading" secondItem="pZb-2K-bC2" secondAttribute="leading" constant="16" id="n80-zy-Fy4"/>
+                            <constraint firstItem="025-zw-A1j" firstAttribute="top" secondItem="U17-aB-ouc" secondAttribute="bottom" constant="24" id="zEm-pQ-h35"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="지도" image="map" catalog="system" id="FRe-gK-El5"/>
@@ -291,8 +248,9 @@
                     <navigationItem key="navigationItem" id="9WI-6J-YfW"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="scrollView" destination="Iqr-Qn-Mzr" id="Hgq-cy-ZRj"/>
+                        <outlet property="directionButton" destination="U17-aB-ouc" id="bOh-dE-Wso"/>
                         <outlet property="searchBar" destination="YBR-tG-WW2" id="ReP-1e-qU4"/>
+                        <outlet property="xmarkButton" destination="680-5a-gXH" id="Ug9-06-2vm"/>
                         <segue destination="Xn0-Jt-Svg" kind="presentation" identifier="ShowSearch" modalPresentationStyle="fullScreen" id="zkU-Ns-VMD"/>
                         <segue destination="fMe-g7-jrz" kind="presentation" identifier="ShowBottomSheet" modalPresentationStyle="pageSheet" id="ZZT-oF-3v4"/>
                     </connections>
@@ -394,13 +352,12 @@
         <image name="arrow.turn.up.right" catalog="system" width="128" height="99"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="99"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="eraser.line.dashed" catalog="system" width="128" height="117"/>
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="lightTextColor">
-            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -410,9 +367,6 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
