@@ -72,6 +72,7 @@ class MapViewController: UIViewController {
         if let item = selectedItem {
             focus(mapx: item.mapx, mapy: item.mapy, title: item.title)
             performSegue(withIdentifier: "ShowBottomSheet", sender: self)
+            print("string")
         }
     }
     // MARK: -검색창을 띄워주고 검색했을 때 그 좌표에 focuse하고 모달표시
