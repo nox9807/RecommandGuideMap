@@ -83,7 +83,36 @@ extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionVie
         let location = theme.locations[indexPath.item]
         cell.configure(location: location)
         
+        // ⭐️ Delegate 연결 필수!
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+extension ThemeDetailViewController: LocationCardCellDelegate {
+    
+    // ⭐ 즐겨찾기 버튼 눌림
+    func locationCardCellDidTapFavorite(_ cell: LocationCardCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        let location = theme.locations[indexPath.item]
+        
+        FavoriteStore.shared.add(from: location)
+        
+        let alert = UIAlertController(
+            title: "즐겨찾기 추가",
+            message: "\"\(location.name)\"을(를) 즐겨찾기에 저장했습니다.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
+    }
+    
+    // 🗺 지도 버튼 눌림
+    func locationCardCellDidTapMap(_ cell: LocationCardCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        let location = theme.locations[indexPath.item]
+        openOnMap(place: location)
     }
 }
 
@@ -94,6 +123,7 @@ private extension ThemeDetailViewController {
             return
         }
         
+        // TODO: 필요하다면 MapViewController에 선택된 장소 전달 기능 추가
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

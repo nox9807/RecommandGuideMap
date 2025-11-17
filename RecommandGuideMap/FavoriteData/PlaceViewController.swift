@@ -34,19 +34,24 @@ class PlaceViewController: UIViewController {
 
 extension PlaceViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return places.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as? PlaceCell else {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "PlaceCell",
+            for: indexPath
+        ) as? PlaceCell else {
             return UITableViewCell()
         }
         
         let place = places[indexPath.row]
-        cell.nameLabel.text = place.name
-        cell.addressLabel.text = place.address
-        cell.categoryLabel.text = place.category
+        cell.nameLabel.text     = place.name
+        cell.addressLabel.text  = place.address
+        cell.categoryLabel.text = place.categoryOrDistance   
         
         cell.imageView1.image = UIImage(named: "sample1")
         cell.imageView2.image = UIImage(named: "sample2")
@@ -54,21 +59,4 @@ extension PlaceViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200  // 셀 높이 (원하면 조정 가능)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "RouteDetailViewController")
-                as? RouteDetailViewController else { return }
-        
-        vc.route = RouteDummyData.samples[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
-    
-    
 }
-

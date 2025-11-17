@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hX5-hf-UqT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hX5-hf-UqT">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
@@ -170,6 +170,9 @@
                                                             <buttonConfiguration key="configuration" style="plain" image="map" catalog="system">
                                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="mapButtonTapped:" destination="i24-0R-zwF" eventType="touchUpInside" id="LfC-Hb-y64"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxX-dg-Ixa">
                                                             <rect key="frame" x="52.333333333333343" y="0.0" width="52" height="34.333333333333336"/>
@@ -177,6 +180,9 @@
                                                             <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
                                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="favoriteButtonTapped:" destination="i24-0R-zwF" eventType="touchUpInside" id="U3X-8Q-bRo"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -214,6 +220,7 @@
                                         <size key="customSize" width="393" height="613"/>
                                         <connections>
                                             <outlet property="descLabel" destination="gm7-WQ-dXe" id="vCF-oT-rbn"/>
+                                            <outlet property="favoriteButton" destination="PxX-dg-Ixa" id="a3e-2v-Xm7"/>
                                             <outlet property="imageView" destination="eZO-4V-pV4" id="fAX-w4-J7o"/>
                                             <outlet property="mapButton" destination="bum-RA-2Cy" id="Uzk-mB-BDe"/>
                                             <outlet property="metaLabel" destination="9Xu-rE-Jr4" id="1Mg-s8-6W9"/>
@@ -251,7 +258,7 @@
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
