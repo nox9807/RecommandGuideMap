@@ -46,9 +46,7 @@ final class RouteDetailViewController: BaseMapViewController {
     }
     
     @objc private func closeTapped() {
-        dismiss(animated: true)
-        // 혹시 네비게이션 push 방식이면 아래로 바꿔야 함
-        // navigationController?.popViewController(animated: true)
+        view.window?.rootViewController?.dismiss(animated: true)
     }
     
     // MARK: - 바텀시트 표시
@@ -61,39 +59,55 @@ final class RouteDetailViewController: BaseMapViewController {
             return
         }
         
-        sheetVC.route = route           // 선택한 루트 데이터 전달
+        sheetVC.route = route
         sheetVC.modalPresentationStyle = .pageSheet
         
-        if let sheet = sheetVC.sheetPresentationController {
-            sheetVC.isModalInPresentation = true      // 아래로 당겨도 dismiss 안 되게
+        present(sheetVC, animated: true) { [weak self, weak sheetVC] in
+            guard
+                let self,
+                let sheetVC,
+                let sheet = sheetVC.sheetPresentationController
+            else { return }
+            
+            // MARK: - 1) 데이터 개수 계산
+            // route.origin + waypoints + route.destination
+            let waypointCount = sheetVC.route?.waypoints.count ?? 0
+            let totalPlaces = waypointCount + 2    // origin + destination
+            
+            // MARK: - 2) UI 컴포넌트 높이 설정
+            let headerHeight: CGFloat = 80
+            let cellHeight: CGFloat = 90
+            let bottomPadding: CGFloat = 20
+            let visibleCells = min(totalPlaces, 3) // 최대 3개만 한 화면에서 전체 노출
+            
+            // MARK: - 3) 컨텐츠가 차지해야 할 목표 높이
+            var contentHeight = headerHeight + (cellHeight * CGFloat(visibleCells)) + bottomPadding
+            
+            // MARK: - 4) 화면 최대 높이 제한 (85%)
+            let screenHeight = self.view.window?.windowScene?.screen.bounds.height ?? 0
+            let maxAllowedHeight = screenHeight * 0.85
+            contentHeight = min(contentHeight, maxAllowedHeight)
+            
+            // MARK: - 5) collapsed 상태 (무조건 일정 높이)
+            let collapsed = UISheetPresentationController.Detent.custom(
+                identifier: .init("collapsed")
+            ) { _ in 80 }
+            
+            // MARK: - 6) expanded 상태 (계산한 높이)
+            let expanded = UISheetPresentationController.Detent.custom(
+                identifier: .init("expanded")
+            ) { _ in contentHeight }
+            
+            // MARK: - 7) Detents 적용
+            sheet.detents = [collapsed, expanded]
+            sheet.selectedDetentIdentifier = expanded.identifier
+            sheet.largestUndimmedDetentIdentifier = expanded.identifier
+            
+            // MARK: - 8) 옵션
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
-            
-            // ① 아래로 내렸을 때: 제목 + 별 버튼만 보이는 높이
-            let headerDetent = UISheetPresentationController.Detent.custom(
-                identifier: .init("header")
-            ) { _ in
-                return 80   // 필요하면 110~140 사이로 조절
-            }
-            
-            // ② 처음 올라올 때: 콘텐츠 전체(출발/경유/도착) 보이는 높이
-            let contentDetent = UISheetPresentationController.Detent.custom(
-                identifier: .init("content")
-            ) { _ in
-                // 방금 BottomSheetViewController에서 계산해 둔 높이 사용
-                return sheetVC.preferredContentSize.height
-            }
-            
-            // 두 단계 설정
-            sheet.detents = [headerDetent, contentDetent]
-            
-            // ▶ 처음에는 “내용 전체” 높이로 띄우기
-            sheet.selectedDetentIdentifier = contentDetent.identifier
-            
-            // dim(배경 어두워지는 범위)은 그냥 전체로 두고 싶으면 nil 또는 contentDetent
-            sheet.largestUndimmedDetentIdentifier = contentDetent.identifier
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
         }
-        
-        present(sheetVC, animated: true)
     }
 }

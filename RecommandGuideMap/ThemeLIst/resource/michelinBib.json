@@ -9,8 +9,8 @@
             "rating": 5,
             "address": "서울특별시 중구 창경궁로 62-29",
             "description": "80년 전통의 대한민국 대표 평양냉면집.",
-            "lat": 37.56815,
-            "lng": 126.99815,
+            "lat": 37.568154,
+            "lng": 126.998703,
             "imageURL": "https://i.ibb.co/q3q2d9f8/woo.jpg"
         },
         {
@@ -19,8 +19,8 @@
             "rating": 5,
             "address": "서울특별시 중구 명동 10길 29",
             "description": "우리나라 교자의 1번지 명동에 60년 전통 오리저널 맛집.",
-            "lat": 37.562547,
-            "lng": 126.98561,
+            "lat": 37.561010,
+            "lng": 126.986103,
             "imageURL": "https://i.ibb.co/ZR2mRrnq/meung.jpg"
         },
         {
@@ -29,7 +29,7 @@
             "rating": 5,
             "address": "서울특별시 종로구 북촌로 5길 10",
             "description": "익숙한 한식의맛, 새로운 음식의 경험.",
-            "lat": 37.57938,
+            "lat": 37.579428,
             "lng": 126.984458,
             "imageURL": "https://i.ibb.co/Kp9Bp0cH/an.jpg"
         },
