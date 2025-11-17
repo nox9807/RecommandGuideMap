@@ -85,6 +85,11 @@ extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionVie
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let location = theme.locations[indexPath.item]
+        openOnMap(place: location)
+    } 
 }
 
 // MARK: - LocationCardCellDelegate
@@ -117,12 +122,28 @@ extension ThemeDetailViewController: LocationCardCellDelegate {
 
 private extension ThemeDetailViewController {
     func openOnMap(place: Location) {
+        guard let location = theme.locations.first else { return }
+        
         let storyboard = UIStoryboard(name: "Map", bundle: nil)
+        guard let mapVC = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {
+            print("MapViewController not found")
+            return
+        }
         
-        guard let viewController = storyboard.instantiateViewController(
-            withIdentifier: "MapViewController"
-        ) as? MapViewController else { return }
+        // SearchResponse.SearchItem 형식으로 변환 (MapViewController가 사용하는 구조)
+        let item = SearchResponse.SearchItem(
+            title: location.name,
+            category: "추천 관광지",
+            address: location.address,
+            roadAddress: location.address,
+            mapx: "(location.lng)",
+            mapy: "(location.lat)"
+        )
         
-        navigationController?.pushViewController(viewController, animated: true)
+        mapVC.selectedItem = item
+        mapVC.modalPresentationStyle = .fullScreen
+        mapVC.isHiddenViews = true
+        present(mapVC, animated: true)
     }
 }
+

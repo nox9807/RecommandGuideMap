@@ -13,9 +13,15 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var directionButton: UIButton!
+    @IBOutlet weak var xmarkButton: UIButton!
     
+    @IBAction func xmarkButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
     let manager = CLLocationManager()
     var isFollowingUser: Bool = true
+    var isHiddenViews = false
     var selectedItem: SearchResponse.SearchItem?
     // 기존 mapView만으로 지도를 구현했는데 showLoactionButton이 NMFNaverMapView에서만 제공되는 API라 NMFNaverMapView를 루트로 쓰고 내부의 실제 지도는 mapView: NMFMapView로 읽기 전용 계산 프로퍼티로 기존코드를 그대로 사용
     private var naverMapView: NMFNaverMapView!
@@ -34,6 +40,12 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isHiddenViews {
+            searchBar.isHidden = true
+            directionButton.isHidden = true
+            xmarkButton.isHidden = false
+        }
         
         manager.distanceFilter = 5
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -54,7 +66,14 @@ class MapViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         //searchBar.delegate = self
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let item = selectedItem {
+            focus(mapx: item.mapx, mapy: item.mapy, title: item.title)
+            performSegue(withIdentifier: "ShowBottomSheet", sender: self)
+        }
+    }
     // MARK: -검색창을 띄워주고 검색했을 때 그 좌표에 focuse하고 모달표시
     func presentSearch() {
         let vc = storyboard?.instantiateViewController(identifier: "SearchViewController") as! SearchViewController
@@ -172,23 +191,6 @@ class MapViewController: UIViewController {
         marker = mapMarker
         markers.append(mapMarker)
     }
-    
-//    // MARK: - 좌표값 문자열을 소수로 치환하는 메소드
-//    func tm128Double(from raw: String, Digits: Int = 7) -> Double? {
-//        let digits = raw.filter(\.isNumber)
-//        guard !digits.isEmpty else { return nil }
-//        
-//        if digits.count <= Digits {
-//            let frac = String(repeating: "0", count: Digits - digits.count) + digits
-//            return Double("0.\(frac)")
-//        } else {
-//            let splitIdx = digits.index(digits.endIndex, offsetBy: -Digits)
-//            let frontPart = String(digits[..<splitIdx])
-//            let backPart = String(digits[splitIdx...])
-//            
-//            return Double("\(frontPart).\(backPart)")
-//        }
-//    }
     
     // MARK: - 알림 표시(위치 서비스를 비활성화 했을 때)
     func showAlert() {
