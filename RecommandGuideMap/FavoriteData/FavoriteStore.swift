@@ -36,9 +36,10 @@ final class FavoriteStore {
         // mapx, mapy → Double 변환
         let lat = Double(searchItem.mapy) ?? 0
         let lng = Double(searchItem.mapx) ?? 0
+        let uniqueID = "\(searchItem.title)_\(searchItem.mapx)_\(searchItem.mapy)"
         
         let place = FavoritePlace(
-            id: searchItem.link,     // SearchItem에는 고유 id 없음 → link로 대체
+            id: uniqueID,    // SearchItem에는 고유 id 없음 → link로 대체
             name: stripHTML(searchItem.title),
             address: searchItem.roadAddress.isEmpty ? searchItem.address : searchItem.roadAddress,
             categoryOrDistance: searchItem.category,
