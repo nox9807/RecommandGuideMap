@@ -31,13 +31,14 @@ class InfoViewController: UIViewController {
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
         guard let item else { return }
-        //FavoriteStore.shared.add(from: item)
+        FavoriteStore.shared.add(from: item)
         // 간단한 알림 띄우기
         let alert = UIAlertController(title: "즐겨찾기 추가",
                                       message: "즐겨찾기에 저장되었습니다.",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         present(alert, animated: true)
+        
     }
     
     

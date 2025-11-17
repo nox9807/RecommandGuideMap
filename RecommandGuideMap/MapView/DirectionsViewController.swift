@@ -37,6 +37,7 @@ class DirectionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startTextField.becomeFirstResponder()
         
         UIUpdate()
         
@@ -79,7 +80,10 @@ extension DirectionsViewController: UITextFieldDelegate {
         
         print("mapView:", mapView as Any)
         guard let startItem = startItem, let arriveItem = arriveItem else { return true }
-        mapView.mapViewFocus(startMapx: startItem.mapx, startMapy: startItem.mapy, startTitle: startItem.title, arriveMapx: arriveItem.mapx, arriveMapy: arriveItem.mapy, arriveTitle: arriveItem.title)
+        mapView.mapViewFocus(points: [
+            (mapx: startItem.mapx, mapy: startItem.mapy, title: startItem.title),
+            (mapx: arriveItem.mapx, mapy: arriveItem.mapy, title: arriveItem.title)
+        ])
         
         dismiss(animated: true)
         presentingViewController?.dismiss(animated: true)

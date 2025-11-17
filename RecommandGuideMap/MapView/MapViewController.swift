@@ -88,33 +88,45 @@ class MapViewController: UIViewController {
     }
     
     // 출발지와 도착지를 입력하게되면 좌표를 받아서 카메라 업데이트 및 마커표시와 경로표시
-    func mapViewFocus(startMapx: String, startMapy: String, startTitle: String,
-                      arriveMapx: String, arriveMapy: String, arriveTitle: String) {
+    func mapViewFocus(points: [(mapx: String, mapy: String, title: String)]) {
         
         clearMap()
         
-        guard let startLatlng = addMarker(mapx: startMapx, mapy: startMapy, title: startTitle),
-              let arriveLatlng = addMarker(mapx: arriveMapx, mapy: arriveMapy, title: arriveTitle) else { return }
-
-        let bound = NMGLatLngBounds(southWest: NMGLatLng(lat: min(startLatlng.lat, arriveLatlng.lat), lng: min(startLatlng.lng, arriveLatlng.lng)), northEast: NMGLatLng(lat: max(startLatlng.lat, arriveLatlng.lat), lng: max(startLatlng.lng, arriveLatlng.lng)))
+        var latLngPoints: [NMGLatLng] = []
+        for point in points {
+            if let latLng = addMarker(mapx: point.mapx, mapy: point.mapy, title: point.title) {
+                latLngPoints.append(latLng)
+            }
+        }
+        
+        guard latLngPoints.count >= 2 else { return }
+        
+        let lats = latLngPoints.map { $0.lat }
+        let lngs = latLngPoints.map { $0.lng }
+        
+        let bound = NMGLatLngBounds(
+            southWest: NMGLatLng(lat: lats.min() ?? 0, lng: lngs.min() ?? 0),
+            northEast: NMGLatLng(lat: lats.max() ?? 0, lng: lngs.max() ?? 0)
+        )
         
         let cameraUpdate = NMFCameraUpdate(fit: bound, padding: 100)
         cameraUpdate.animation = .easeIn
         mapView.moveCamera(cameraUpdate)
         
-        drawPath(from: startLatlng, to: arriveLatlng)
+        drawPath(points: latLngPoints)
     }
-
-    func drawPath(from start:NMGLatLng, to arrive: NMGLatLng) {
+    // 경로 표시
+    func drawPath(points: [NMGLatLng]) {
+        guard points.count >= 2 else { return }
         let path = NMFPath()
-        path.path = NMGLineString(points: [start, arrive])
+        path.path = NMGLineString(points: points)
         path.color = UIColor.systemBlue
         path.width = 8
         path.mapView = mapView
         
         paths.append(path)
     }
-    
+    // 마커 추가
     func addMarker(mapx: String, mapy: String, title: String) -> NMGLatLng? {
         guard let x = tm128Double(from: mapx),
               let y = tm128Double(from: mapy) else { return nil}
