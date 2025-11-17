@@ -4,9 +4,9 @@
 ---
 
 ## 📱 앱 미리보기 (대표 이미지)
-<div align="center">
+<div>
   
-🔳🔳🔳 **1920 x 300 이미지 영역** (나중에 교체)
+<img width="300" alt="iMockup - iPhone 15 Pro Max" src="https://github.com/user-attachments/assets/d87b6fe2-4c00-494b-bdab-f8a3f6a40bf9" />
 
 </div>
 
@@ -71,7 +71,7 @@ My Route는 **가까운 장소를 빠르게 찾고**,
 ---
 
 # 🛠 구현 기술 및 라이브러리
-(여기부터는 비워둘게! 너가 직접 채워)
+(작성 예정)
 
 ---
 
