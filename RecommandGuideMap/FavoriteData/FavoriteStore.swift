@@ -1,5 +1,3 @@
-// FavoriteStore.swift
-
 import Foundation
 
 struct FavoritePlace {
@@ -11,28 +9,44 @@ struct FavoritePlace {
     let lng: Double
 }
 
-
 final class FavoriteStore {
     static let shared = FavoriteStore()
     private init() {}
     
     private(set) var places: [FavoritePlace] = []
     
+    // ⭐ ThemeDetailViewController → Location 기반 즐겨찾기
     func add(from location: Location) {
         let place = FavoritePlace(
             id: location.id,
             name: location.name,
             address: location.address,
-            categoryOrDistance: location.distanceText, // "카페 · 0.5km" 같은 느낌
+            categoryOrDistance: location.distanceText,
             lat: location.lat,
             lng: location.lng
         )
         
-        // 이미 같은 장소가 있으면 또 추가하지 않기 (선택사항)
-        if places.contains(where: { $0.id == place.id }) {
-            return
-        }
+        if places.contains(where: { $0.id == place.id }) { return }
+        places.append(place)
+    }
+    
+    // ⭐ 지도 검색 화면 → SearchItem 기반 즐겨찾기
+    func add(from searchItem: SearchResponse.SearchItem) {
         
+        // mapx, mapy → Double 변환
+        let lat = Double(searchItem.mapy) ?? 0
+        let lng = Double(searchItem.mapx) ?? 0
+        
+        let place = FavoritePlace(
+            id: searchItem.link,     // SearchItem에는 고유 id 없음 → link로 대체
+            name: stripHTML(searchItem.title),
+            address: searchItem.roadAddress.isEmpty ? searchItem.address : searchItem.roadAddress,
+            categoryOrDistance: searchItem.category,
+            lat: lat,
+            lng: lng
+        )
+        
+        if places.contains(where: { $0.id == place.id }) { return }
         places.append(place)
     }
 }

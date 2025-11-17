@@ -32,31 +32,4 @@ class PlaceViewController: UIViewController {
     }
 }
 
-extension PlaceViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return places.count
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PlaceCell",
-            for: indexPath
-        ) as? PlaceCell else {
-            return UITableViewCell()
-        }
-        
-        let place = places[indexPath.row]
-        cell.nameLabel.text     = place.name
-        cell.addressLabel.text  = place.address
-        cell.categoryLabel.text = place.categoryOrDistance   
-        
-        cell.imageView1.image = UIImage(named: "sample1")
-        cell.imageView2.image = UIImage(named: "sample2")
-        cell.imageView3.image = UIImage(named: "sample3")
-        
-        return cell
-    }
-}
+

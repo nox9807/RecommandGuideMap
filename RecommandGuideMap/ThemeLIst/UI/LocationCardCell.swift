@@ -2,8 +2,6 @@
 //  LocationCardCell.swift
 //  RecommandGuideMap
 //
-//  Created by 이찬희 on 11/10/25.
-//
 
 import UIKit
 
@@ -50,6 +48,6 @@ final class LocationCardCell: UICollectionViewCell {
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
-        delegate?.locationCardCellDidTapFavorite(self)  // ⭐️ 테마 화면으로 이벤트 전달
+        delegate?.locationCardCellDidTapFavorite(self)   // ⭐ ThemeDetailVC로 전달
     }
 }
