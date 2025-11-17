@@ -136,10 +136,10 @@ private extension ThemeDetailViewController {
             category: "추천 관광지",
             address: location.address,
             roadAddress: location.address,
-            mapx: "(location.lng)",
-            mapy: "(location.lat)"
+            mapx: "\(location.lng)",
+            mapy: "\(location.lat)"
         )
-        
+        print(item.mapx, item.mapy)
         mapVC.selectedItem = item
         mapVC.modalPresentationStyle = .fullScreen
         mapVC.isHiddenViews = true

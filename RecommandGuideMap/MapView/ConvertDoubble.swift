@@ -9,6 +9,11 @@ import Foundation
 
 // MARK: - 좌표값 문자열을 소수로 치환하는 메소드
 func tm128Double(from raw: String, Digits: Int = 7) -> Double? {
+    
+    if raw.contains(".") {
+        return Double(raw)
+    }
+    
     let digits = raw.filter(\.isNumber)
     guard !digits.isEmpty else { return nil }
     
