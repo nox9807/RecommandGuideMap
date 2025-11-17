@@ -9,8 +9,8 @@
             "rating": 5,
             "address": "서울특별시 용산구 남산공원길 105",
             "description": "케데헌에서 마지막공연이 펼쳐진 바로 그곳을 우리가? 명실상부 서울 최고의 관광명소인 남산은 어떤가요?",
-            "lat": 37.56815,
-            "lng": 126.99815,
+            "lat": 37.551147,
+            "lng": 126.988229,
             "imageURL": "https://i.ibb.co/tp4Zvhjh/namsan.jpg"
         },
         {
@@ -19,8 +19,8 @@
             "rating": 5,
             "address": "서울특별시 종로구 사직로 1617",
             "description": "서울에 왔다면 이곳은 필수죠! 대한민국의 고궁과 현대 빌딩의 조화의 아름다움을 볼 수 있는 곳.",
-            "lat": 37.56815,
-            "lng": 126.99815,
+            "lat": 37.575859,
+            "lng": 126.976790,
             "imageURL": "https://i.ibb.co/6R1JwZK2/kwang.jpg"
         },
         {
@@ -29,8 +29,8 @@
             "rating": 5,
             "address": "서울특별시  서초구 신반포로11길 40",
             "description": "서울하면 한강, 한강하면 반포? 어밴져스에 나온 세빛섬과 루이비통쇼가 펼쳐졌던 잠수교 이 모든공간이 함께 공존?",
-            "lat": 37.56815,
-            "lng": 126.99815,
+            "lat": 37.510668,
+            "lng": 126.995947,
             "imageURL": "https://i.ibb.co/s9MkPgb4/banpo.jpg"
         },
         {
@@ -39,8 +39,8 @@
             "rating": 5,
             "address": "서울특별시 송파구 올림픽로 240",
             "description": "환상의 나라와 서울의 야경 그리고 랜드마크 롯데월드 타워까지 잠시 환상의 나라로 잠시 여행을 떠나요~",
-            "lat": 37.56815,
-            "lng": 126.99815,
+            "lat": 37.551105,
+            "lng": 127.098188,
             "imageURL": "https://i.ibb.co/YFMv3627/lotteworld.jpg"
         },
         {
@@ -49,8 +49,8 @@
             "rating": 5,
             "address": "서울특별시 영등포구 여의대로 108",
             "description": "MZ세대의 취향과 음식 명품옷들까지 대한민국 소비문화 일번지! K-컬처를 경험하고 싶다면 이곳으로~",
-            "lat": 37.56815,
-            "lng": 126.99815,
+            "lat": 37.525901,
+            "lng": 126.928496,
             "imageURL": "https://i.ibb.co/6JycXFpp/thehyndai.jpg"
         },
         {
@@ -59,8 +59,8 @@
             "rating": 5,
             "address": "서울특별시 종로구 익선동",
             "description": "도심 한가운데 작은 한옥마을이 모여 있는곳. 최고의 맛집과 카페가 모두 모여있는 한국의 아름다움의 정점",
-            "lat": 37.56815,
-            "lng": 126.99815,
+            "lat": 37.573733,
+            "lng": 126.990064,
             "imageURL": "https://i.ibb.co/G47kLcnW/eikson.jpg"
         }
     ]
