@@ -76,8 +76,6 @@ extension PlaceViewController: UITableViewDataSource, UITableViewDelegate {
             mapx: String(Int(place.lng)),
             mapy: String(Int(place.lat))
         )
-        print(place.lat)
-        print(place.lng)
         
         mapVC.selectedItem = item
         
