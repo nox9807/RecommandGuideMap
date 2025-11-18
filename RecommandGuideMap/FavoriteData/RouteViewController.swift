@@ -8,7 +8,7 @@ class RouteViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var routes: [RouteSummary] = RouteDummyData.samples
+    private var routes: [RouteSummary] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

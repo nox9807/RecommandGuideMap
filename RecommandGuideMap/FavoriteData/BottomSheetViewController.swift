@@ -14,10 +14,6 @@ final class BottomSheetViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 20
         
-        // 없는 경우만 기본값 채우기 (updateUI 호출 X)
-        if route == nil {
-            route = RouteDummyData.samples.first
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
