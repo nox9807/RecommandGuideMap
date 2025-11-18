@@ -188,6 +188,7 @@
                                     <imageReference key="image" image="arrow.turn.up.right" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="didTapDirections:" destination="0s9-f2-CQt" eventType="touchUpInside" id="viZ-GO-kk3"/>
                                     <segue destination="k7M-Pv-XNc" kind="presentation" identifier="ShowDirections" modalPresentationStyle="fullScreen" id="ad5-Ya-npt"/>
                                 </connections>
                             </button>
@@ -256,6 +257,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ShG-cb-v5s" sceneMemberID="firstResponder"/>
+                <exit id="0s9-f2-CQt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="127.48091603053435" y="104.92957746478874"/>
         </scene>
