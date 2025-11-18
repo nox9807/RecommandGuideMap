@@ -32,9 +32,13 @@ My Route는 **원하는 장소를 빠르게 찾고**,
 
 ## 🏠 홈(Home)
 
+
+
+
+
 | 홈 화면 | 장소 상세 화면 | 길찾기 화면 |
 |---------|----------------|--------------|
-| <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> |
+| <img width="375" height="812" src="https://github.com/user-attachments/assets/5258732a-d7c9-4120-af80-126afb9ee8b0" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/4674e202-a7d8-4d03-a892-f8a3fa678395" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/f5699e6c-f6ac-4185-9b39-952db4433987"  /> |
 
 ### ✔ 홈 주요 기능
 - 현재 위치 기반 근처 인기 장소 추천  
@@ -48,7 +52,7 @@ My Route는 **원하는 장소를 빠르게 찾고**,
 
 | 테마지도 화면 | 테마 상세 화면 |
 |----------------|----------------|
-| <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> |
+| <img width="375" height="812" src="https://github.com/user-attachments/assets/46cf3ecd-8e44-4ea7-b8ce-9073bd455886" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/58e9a78d-1ec5-4796-873a-b27be118734f" /> |
 
 ### ✔ 테마지도 주요 기능
 - 카테고리(데이트/카페/혼밥 등)별 지도 필터링  
@@ -59,9 +63,10 @@ My Route는 **원하는 장소를 빠르게 찾고**,
 
 ## ⭐ 즐겨찾기(Favorites)
 
+
 | 즐겨찾기 목록 | 루트 화면 | 루트 상세 화면 |
 |---------------|-----------|----------------|
-| <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> |
+| <img width="375" height="812" src="https://github.com/user-attachments/assets/06a9fdb0-d029-4c0d-97ac-60dd0973b90e"  /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/54927646-1a9b-4c95-9705-d7c25dc0b893"  /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/a9674920-feb2-48da-83d8-ffc274be9e22"  /> |
 
 ### ✔ 즐겨찾기 주요 기능
 - 장소를 즐겨찾기하면 자동으로 목록에 저장  
