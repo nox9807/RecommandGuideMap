@@ -76,7 +76,43 @@ My Route는 **원하는 장소를 빠르게 찾고**,
 ---
 
 # 🛠 구현 기술 및 라이브러리
-(작성 예정)
+
+**UI & Layout**  
+- UIKit & Storyboard 기반 화면 구성  
+- AutoLayout을 활용한 인터페이스 레이아웃  
+- MapView, ThemeList, Favorite 모듈 단위로 화면 분리  
+
+**Data Persistence**  
+- CoreData를 활용한 장소 및 루트 정보 저장  
+- FavoriteEntity 기반 CRUD 처리  
+- 앱 실행 시 persistentContainer로 데이터 로드
+
+**Concurrency**  
+- async/await를 활용한 비동기 네트워킹 처리  
+- URLSession 기반 API 요청  
+- Codable 기반 JSON 파싱
+
+**APIs**  
+- **Naver Directions API**: 출발/도착지를 이용한 길찾기 경로 탐색  
+- **TourAPI (한국관광공사)**: 테마별 장소/관광지/맛집 데이터 조회  
+
+**Maps**  
+- **NMapsMap (네이버 지도 SDK)**: 지도 렌더링, 마커 표시, 카메라 컨트롤  
+- **NMapsGeometry**: 위·경도 및 경로 계산 보조
+
+**Location**  
+- **CoreLocation**: 사용자 현재 위치 추적 및 지도 초기 위치 설정  
+- 위치 권한 요청 및 위치 업데이트 처리
+
+**Architecture**  
+- MVC 구조 기반  
+- Favorite / MapView / ThemeList 모듈화  
+- Model, Network, UI 레이어 구분 설계
+
+**Dependencies**  
+- NMapsMap 3.23.0  
+- NMapsGeometry 1.0.2
+
 
 ---
 
