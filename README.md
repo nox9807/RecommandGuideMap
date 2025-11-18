@@ -80,10 +80,29 @@ My Route는 **원하는 장소를 빠르게 찾고**,
 
 ---
 
-# ⚙ 프로젝트 세팅
-(작성 예정)
+## ⚙ 프로젝트 세팅
+
+이 프로젝트는 **Naver Maps SDK**와 **TourAPI(공공데이터)** 를 사용합니다.  
+원활한 실행을 위해 각 서비스에서 발급받은 API Key를 프로젝트에 설정해야 합니다.
 
 ---
+
+### 1. 🔐 API Key 설정
+
+#### 1) Secrets.xcconfig 파일 설정
+다음 경로에 위치한 `Secrets.xcconfig` 파일에 API 키를 추가합니다.
+
+`RecommandGuideMap/Secrets/Secrets.xcconfig`
+
+```xcconfig
+NAVER_CLIENT_ID = "네이버 지도 Client ID"
+NAVER_CLIENT_SECRET = "네이버 지도 Client Secret"
+
+NAVER_DIRECTION_CLIENT_ID = "네이버 길찾기 Client ID"
+NAVER_DIRECTION_CLIENT_SECRET = "네이버 길찾기 Client Secret"
+
+TOUR_SERVICE_KEY = "TourAPI 서비스 키"
+
 
 # 📁 폴더 구조
 ```
