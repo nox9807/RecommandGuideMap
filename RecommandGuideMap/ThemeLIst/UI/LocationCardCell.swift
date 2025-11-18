@@ -1,8 +1,10 @@
+/// [feat] 장소 카드 셀 구현 및 즐겨찾기/지도 액션 델리게이트 패턴 적용
+/// - Location 정보를 카드 형태로 표시
+/// - 즐겨찾기/지도 버튼 탭을 델리게이트로 상위 VC에 전달
 //
 //  LocationCardCell.swift
 //  RecommandGuideMap
 //
-
 import UIKit
 
 protocol LocationCardCellDelegate: AnyObject {

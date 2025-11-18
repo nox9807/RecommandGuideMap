@@ -1,10 +1,12 @@
+/// [feat] 비동기 이미지 로딩 + NSCache 캐싱 기능 구현
+/// - UIImageView 확장 setImage(url:) 지원
+/// - URLSession 기반 다운로드
 //
 //  ImageLoader.swift
 //  RecommandGuideMap
 //
 //  Created by 이찬희 on 11/10/25.
 //
-
 import UIKit
 
 final class ImageLoader {
@@ -39,6 +41,8 @@ final class ImageLoader {
         }.resume()
     }
 }
+
+// UIImageView 편의 메서드
 extension UIImageView {
     func setImage(url: String, placeholder: UIImage? = nil) {
         ImageLoader.shared.load(url, into: self, placeholder: placeholder)

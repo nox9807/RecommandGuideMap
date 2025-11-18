@@ -1,10 +1,15 @@
+/// [feat] 공공데이터 TourAPI 연동 기능 구현
+/// - search(keyword:) 비동기 검색 지원
+/// - 응답 모델(TourResponse) 전체 정의
+/// - 공공데이터 resultCode 확인 및 에러 처리
+///
+/// [refactor] TourPlace → Location 변환 로직 일원화
 //
 //  TourAPI.swift
 //  RecommandGuideMap
 //
 //  Created by 이찬희 on 11/15/25.
 //
-// TourAPI.swift - 완전한 코드
 import Foundation
 
 // MARK: - Tour API Response
@@ -90,7 +95,7 @@ final class TourAPI {
         }
         return key
     }
-    
+    /// [feat] 관광 정보 검색 API
     func search(keyword: String, rows: Int = 10, page: Int = 1) async throws -> [Location] {
         guard var components = URLComponents(string: "\(baseURL)/searchKeyword2") else {
             throw URLError(.badURL)
@@ -136,7 +141,7 @@ final class TourAPI {
             }
         }()
         
-        // Location으로 변환
+        // TourPlace → Location 변환
         return places.compactMap { place in
             guard let mapx = place.mapx, let mapy = place.mapy,
                   let lng = Double(mapx), let lat = Double(mapy),

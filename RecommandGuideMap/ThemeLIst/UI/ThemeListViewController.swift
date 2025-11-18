@@ -1,10 +1,13 @@
+/// [feat] 테마 리스트 화면 구현 및 데이터 로딩 파이프라인 구성
+/// - 로컬 JSON(더미) + TourAPI 검색 결과를 합쳐서 Theme 배열 생성
+/// - 콤포지셔널 레이아웃 기반 리스트 UI
+/// - Theme 선택 시 ThemeDetailViewController로 네비게이션
 //
 //  ThemeListViewController.swift
 //  RecommandGuideMap
 //
 //  Created by 이찬희 on 11/10/25.
 //
-
 import UIKit
 
 final class ThemeListViewController: UIViewController {
@@ -50,7 +53,9 @@ final class ThemeListViewController: UIViewController {
         
         return UICollectionViewCompositionalLayout(section: section)
     }
-    
+    /// [feat] 테마 데이터 로딩
+    /// - 1) 로컬 JSON 기반 Theme 로드
+    /// - 2) TourAPI 카테고리별 검색 결과를 Theme로 변환
     private func loadThemes() async {
         do {
             var allThemes: [Theme] = []

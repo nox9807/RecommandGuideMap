@@ -1,10 +1,12 @@
+/// [feat] 번들 JSON 파일을 제네릭으로 디코딩하는 유틸리티 추가
+/// - JSON 파일명으로 T:Decodable 타입을 로드하는 기능 제공
+/// - 에러 처리 포함
 //
 //  BunbleDecoder.swift
 //  RecommandGuideMap
 //
 //  Created by 이찬희 on 11/13/25.
 //
-
 import Foundation
 
 extension Bundle {

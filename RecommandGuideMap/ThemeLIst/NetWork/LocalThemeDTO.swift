@@ -1,10 +1,12 @@
+/// [refactor] JSON DTO 구조 정의 및 도메인 모델(Location/Theme) 변환 메서드 추가
+/// - LocalPlaceDTO → Location
+/// - ThemeDTO → Theme
 //
 //  LocalPlaceDTO.swift
 //  RecommandGuideMap
 //
 //  Created by 이찬희 on 11/13/25.
 //
-
 import Foundation
 import UIKit
 

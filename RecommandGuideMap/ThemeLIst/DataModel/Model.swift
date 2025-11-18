@@ -1,3 +1,6 @@
+/// [feat] Theme / Location 모델 구조체 정의
+/// - Codable 기반 JSON 파싱 모델
+/// - viewCount 계산 프로퍼티 포함
 //
 //  Model.swift
 //  RecommandGuideMap

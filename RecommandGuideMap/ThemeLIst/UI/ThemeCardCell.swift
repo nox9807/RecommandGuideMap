@@ -1,10 +1,12 @@
+/// [feat] 테마 카드 셀 구현
+/// - Theme의 썸네일 이미지와 타이틀을 카드 형태로 표시
+/// - 그림자/코너 둥글기 적용으로 리스트 UI 강화
 //
 //  ThemeCardCell.swift
 //  RecommandGuideMap
 //
 //  Created by 이찬희 on 11/10/25.
 //
-
 import UIKit
 
 final class ThemeCardCell: UICollectionViewCell {

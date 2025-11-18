@@ -1,8 +1,12 @@
+/// [feat] 테마 상세 화면 구현 (수평 페이징 카드 리스트)
+/// - 선택된 Theme에 포함된 Location들을 가로 스와이프 카드로 표시
+/// - 즐겨찾기/지도 열기 액션 처리
+///
+/// [refactor] 지도 화면 이동 로직을 helper 메서드로 분리(openOnMap)
 //
 //  ThemeDetailViewController.swift
 //  RecommandGuideMap
 //
-
 import UIKit
 
 final class ThemeDetailViewController: UIViewController {
@@ -81,7 +85,7 @@ extension ThemeDetailViewController: UICollectionViewDataSource, UICollectionVie
         
         let location = theme.locations[indexPath.item]
         cell.configure(location: location)
-        cell.delegate = self      // ⭐ 반드시 연결
+        cell.delegate = self
         
         return cell
     }
