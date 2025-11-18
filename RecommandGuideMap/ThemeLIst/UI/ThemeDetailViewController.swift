@@ -122,7 +122,7 @@ extension ThemeDetailViewController: LocationCardCellDelegate {
 
 private extension ThemeDetailViewController {
     func openOnMap(place: Location) {
-        guard let location = theme.locations.first else { return }
+        let location = place
         
         let storyboard = UIStoryboard(name: "Map", bundle: nil)
         guard let mapVC = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {

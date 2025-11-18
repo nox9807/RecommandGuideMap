@@ -6,6 +6,10 @@
 	<string>$(NAVER_CLIENT_ID)</string>
 	<key>NAVER_CLIENT_SECRET</key>
 	<string>$(NAVER_CLIENT_SECRET)</string>
+	<key>NAVER_DIRECTION_CLIENT_ID</key>
+	<string>$(NAVER_DIRECTION_CLIENT_ID)</string>
+	<key>NAVER_DIRECTION_CLIENT_SECRET</key>
+	<string>$(NAVER_DIRECTION_CLIENT_SECRET)</string>
 	<key>NMFNcpKeyId</key>
 	<string>csdcma5zdc</string>
 	<key>NSAppTransportSecurity</key>
