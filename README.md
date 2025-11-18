@@ -81,7 +81,55 @@ My Route는 **가까운 장소를 빠르게 찾고**,
 ---
 
 # 📁 폴더 구조
-(작성 예정)
+```
+📁 RecommandGuideMap
+├ 📁 Favorite                      
+│   └ 📁 Model
+│   │   ├ 📝 FavoriteModalViewController
+│   │   ├ 📝 Place
+│   │   ├ 📝 RouteDummyData
+│   │   ├ 📝 RouteModel
+│   ├ 📝 BaseMapViewController
+│   ├ 📝 BottomSheetViewController 
+│   ├ 📝 FavoriteMapViewController
+│   ├ 📝 FavoriteStore
+│   ├  FavoriteModel // 코어데이터
+│   ├ 📝 PlaceCell
+│   ├ 📝 PlaceViewController
+│   ├ 📝 RouteCell
+│   ├ 📝 RouteDetailViewController
+│   ├ 📝 RouteViewController
+├ 📁 MapView
+│   └ 📁 Model
+│   │   ├ 📝 ConvertDoubble
+│   │   ├ 📝 SearchData
+│   │   ├ 📝 SearchModel
+│   └ 📁 UI
+│   │   ├ 📝 DirectionsViewController
+│   │   ├ 📝 InfoViewController
+│   │   ├ 📝 MapViewController
+│   │   ├ 📝 SearchViewController
+├ 📁 ThemeList
+│   └ 📁 DataModel
+│   │   ├ 📝 BunbleDecoder
+│   │   ├ 📝 ImageLoader
+│   │   ├ 📝 Model
+│   └ 📁 NetWork
+│   │   ├ 📝 LocalThemeDTO
+│   │   ├ 📝 TourAPI
+│   └ 📁 resource
+│   │   ├ blueRibbon
+│   │   ├ hotelSeoul
+│   │   ├ michelin
+│   │   ├ michelinBib
+│   │   ├ tourSpot
+│   │   ├ yongsanCourse
+│   └ 📁 UI
+│   │   ├ 📝 LocationCardCell
+│   │   ├ 📝 ThemeCardCell
+│   │   ├ 📝 ThemeDetailViewController
+│   │   ├ 📝 ThemeListViewController
+```
 
 ---
 
