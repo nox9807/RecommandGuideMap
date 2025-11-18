@@ -78,7 +78,6 @@ extension DirectionsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        print("mapView:", mapView as Any)
         guard let startItem = startItem, let arriveItem = arriveItem else { return true }
         mapView.mapViewFocus(points: [
             (mapx: startItem.mapx, mapy: startItem.mapy, title: startItem.title),

@@ -22,6 +22,7 @@ class InfoViewController: UIViewController {
         
         presentStartDirectionView()
     }
+    
     @IBAction func arriveButton(_ sender: Any) {
         guard let item else { return }
         onDirectRequest?(item)
@@ -40,7 +41,6 @@ class InfoViewController: UIViewController {
         present(alert, animated: true)
         
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
