@@ -105,7 +105,7 @@ TOUR_SERVICE_KEY = "TourAPI 서비스 키"
 
 
 # 📁 폴더 구조
-```
+
 📁 RecommandGuideMap
 ├ 📁 Favorite                      
 │   └ 📁 Model
