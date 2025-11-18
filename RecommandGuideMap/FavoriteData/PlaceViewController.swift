@@ -73,8 +73,8 @@ extension PlaceViewController: UITableViewDataSource, UITableViewDelegate {
             category: place.categoryOrDistance,
             address: place.address,
             roadAddress: place.address,
-            mapx: "(place.lng)",
-            mapy: "(place.lat)"
+            mapx: String(Int(place.lng)),
+            mapy: String(Int(place.lat))
         )
         print(place.lat)
         print(place.lng)
