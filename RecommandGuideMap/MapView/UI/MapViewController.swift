@@ -257,7 +257,7 @@ extension MapViewController: CLLocationManagerDelegate {
             case .authorizedAlways:
                 manager.startUpdatingLocation()
             case .authorizedWhenInUse:
-                manager.startUpdatingLocation() //시제로 위치정보를 요청하는 메소드
+                manager.startUpdatingLocation()
             @unknown default:
                 break
         }
@@ -282,7 +282,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     // MARK: FailError 표시
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        // 무시해도되는 에러때문에 이걸로 무시하게해줘야함.
+        // 무시해도되는 에러때문에 무시하게해줘야함.
         let error = error as NSError
         guard error.code != CLError.Code.locationUnknown.rawValue else { return }
         
