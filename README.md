@@ -3,7 +3,7 @@
 
 ---
 
-## 📱 앱 미리보기 (대표 이미지)
+## 📱 앱 미리보기 
 <div>
   
 <img width="300" alt="iMockup - iPhone 15 Pro Max" src="https://github.com/user-attachments/assets/d87b6fe2-4c00-494b-bdab-f8a3f6a40bf9" />
@@ -21,7 +21,7 @@ My Route는 **가까운 장소를 빠르게 찾고**,
 
 # 📌 주요 기능
 - **홈** : 주변 추천 장소 탐색 및 길찾기
-- **테마지도** : 카테고리(카페·데이트·핫플 등) 기반 장소 추천
+- **테마지도** : 카테고리 기반 장소 추천
 - **즐겨찾기** : 내가 저장한 루트/장소 조회 및 루트 상세 확인
 
 ---
@@ -37,7 +37,6 @@ My Route는 **가까운 장소를 빠르게 찾고**,
 | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> |
 
 ### ✔ 홈 주요 기능
-- 현재 위치 기반 근처 인기 장소 추천  
 - 장소 선택 시 상세정보 제공  
 - 길찾기 버튼 클릭 시 경로 탐색  
 - 간단한 UI로 누구나 빠르게 길 찾기 가능  
@@ -51,9 +50,9 @@ My Route는 **가까운 장소를 빠르게 찾고**,
 | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> | <img width="375" height="812" src="https://github.com/user-attachments/assets/7933e73e-4e94-407a-977b-8ab87d0093f4" /> |
 
 ### ✔ 테마지도 주요 기능
-- 카테고리(데이트/카페/혼밥 등)별 지도 필터링  
-- 테마 선택 시 해당 장소들만 지도에 표시  
-- 심플한 지도 인터랙션  
+- 카테고리 별 장소 추천
+- 마음에 드는 장소 저장 가능
+- 맵에서 보기 가능
 
 ---
 
@@ -86,5 +85,8 @@ My Route는 **가까운 장소를 빠르게 찾고**,
 ---
 
 # 👩‍💻 개발자 소개
-(작성 예정)
+최재영
+이찬희
+박채윤
+
 
